@@ -1,4 +1,8 @@
 const User = require('./user')
+<<<<<<< HEAD
+=======
+const Review = require('./review')
+>>>>>>> origin/issue5
 const Product = require('./product')
 
 /**
@@ -7,6 +11,9 @@ const Product = require('./product')
  *
  *    BlogPost.belongsTo(User)
  */
+
+ Review.belongsTo(User);
+ Review.belongsTo(Product);
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,
@@ -20,5 +27,10 @@ const Product = require('./product')
 
 module.exports = {
   User,
-  Product
+  Product,
+  Order,
+  Category,
+  Review
 }
+
+Order.belongsTo(User);
