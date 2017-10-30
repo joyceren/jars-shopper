@@ -1,8 +1,6 @@
 const crypto = require('crypto')
 const Sequelize = require('sequelize')
 const db = require('../db')
-const User = require('./user');
-const Product = require('./product');
 
 const Review = db.define('review', {
   stars: {
@@ -19,8 +17,5 @@ const Review = db.define('review', {
     type: Sequelize.TEXT
   },
 })
-
-Review.belongsTo(User);
-Review.belongsTo(Product);
 
 module.exports = Reviews;
