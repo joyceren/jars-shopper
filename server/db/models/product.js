@@ -29,7 +29,7 @@ const Product = db.define('product', {
     allowNull: false
   },
   image: {
-    type: Sequelize,
+    type: Sequelize.STRING,
     defaultValue: function() {
       return getRandomImage();
     },
