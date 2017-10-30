@@ -15,7 +15,8 @@ const User = require('./user')
  */
 module.exports = {
   User,
-  Order
+  Order,
+  Category
 }
 
 Order.belongsTo(User);
