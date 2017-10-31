@@ -1,10 +1,11 @@
 const express = require('express')
-const Product = require('../db/models/product');
+const { Review, Product } = require('../db/models');
 
 const router = new express.Router();
 
 router.get('/', function(req, res, next){
 	Product.findAll({
+		include: [ Review ]
 	})
 		.then(products => res.json(products))
 		.catch(next)
@@ -12,6 +13,7 @@ router.get('/', function(req, res, next){
 
 router.get('/:id', function(req, res, next){
 	Product.findById(req.params.id, {
+		include: [ Review ]
 	})
 		.then(product => {
 			if (!product) res.sendStatus(404)
