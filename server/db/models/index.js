@@ -13,6 +13,11 @@ const Category = require('./category')
 
  Review.belongsTo(User);
  Review.belongsTo(Product);
+ Product.hasMany(Review);
+ Product.belongsToMany(Category, {through: 'product_category'});
+ Order.belongsTo(User);
+ User.hasMany(Order);
+ User.hasMany(Review);
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,
@@ -24,6 +29,8 @@ const Category = require('./category')
  Product.hasMany(Review);
  Product.belongsToMany(Category);
 
+
+
 module.exports = {
   User,
   Product,
@@ -32,4 +39,3 @@ module.exports = {
   Review
 }
 
-Order.belongsTo(User);
