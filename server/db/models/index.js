@@ -3,6 +3,7 @@ const Review = require('./review')
 const Product = require('./product')
 const Order = require('./order')
 const Category = require('./category')
+const db = require('../db')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -10,6 +11,8 @@ const Category = require('./category')
  *
  *    BlogPost.belongsTo(User)
  */
+
+//  ProductCategory = db.define()
 
  Review.belongsTo(User);
  Review.belongsTo(Product);
