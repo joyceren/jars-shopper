@@ -12,12 +12,11 @@ const db = require('../db')
  *    BlogPost.belongsTo(User)
  */
 
-//  ProductCategory = db.define()
-
+ const ProductCategory = db.define('product_category', {})
  Review.belongsTo(User);
  Review.belongsTo(Product);
  Product.hasMany(Review);
- Product.belongsToMany(Category, {through: 'product_category'});
+ Product.belongsToMany(Category, {through: ProductCategory})
  Order.belongsTo(User);
  User.hasMany(Order);
  User.hasMany(Review);
@@ -34,6 +33,7 @@ module.exports = {
   Product,
   Order,
   Category,
-  Review
+  Review,
+  ProductCategory
 }
 

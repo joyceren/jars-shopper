@@ -1,5 +1,5 @@
 const db = require('./server/db/index');
-const { Product, Order, User, Review, Category } = require('./server/db/models/index');
+const { Product, Order, User, Review, Category, ProductCategory } = require('./server/db/models/index');
 
 
 const users = [{ email: 'thequeen@england.com', password: 'password', googleId: 'queeny' },
@@ -29,14 +29,14 @@ const categories = [
   { name: 'blue' }, { name: 'red' }, { name: 'green' }, { name: 'purple' }
 ]
 
-// const productCategories = [
-//   { productId: 1, categoryId: 1},
-//   { productId: 2, categoryId: 3},
-//   { productId: 1, categoryId: 2},
-//   { productId: 3, categoryId: 4},
-//   { productId: 4, categoryId: 4}
+const productCategories = [
+  { productId: 1, categoryId: 1},
+  { productId: 2, categoryId: 3},
+  { productId: 1, categoryId: 2},
+  { productId: 3, categoryId: 4},
+  { productId: 4, categoryId: 4}
 
-// ]
+]
 
 const orders = [
   { date: '2016-08-09 07:42:28', products: [{ id: 1, title: 'Dragon1', description: 'dragon 1', price: '82', quantity: 7 },
@@ -70,10 +70,14 @@ const seed = () =>
   Promise.all(reviews.map(review =>
     Review.create(review))
   ))
-
-
-
-  ;
+  .then(() =>
+  Promise.all(categories.map(category =>
+    Category.create(category))
+  ))
+  .then(() =>
+  Promise.all(productCategories.map(productCategory =>
+    ProductCategory.create(productCategory))
+  ));
 
 const main = () => {
   console.log('Syncing db...');
