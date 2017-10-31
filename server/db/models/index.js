@@ -1,8 +1,5 @@
 const User = require('./user')
-<<<<<<< HEAD
-=======
 const Review = require('./review')
->>>>>>> origin/issue5
 const Product = require('./product')
 
 /**
