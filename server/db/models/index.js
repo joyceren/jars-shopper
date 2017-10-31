@@ -20,7 +20,11 @@ const Product = require('./product')
 
 module.exports = {
   User,
+<<<<<<< HEAD
   Product
+=======
+  Category
+>>>>>>> 23e0032650fa154f15e21a4daa1321b6aa4ecb1c
 }
 
 Order.belongsTo(User);
