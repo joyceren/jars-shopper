@@ -22,3 +22,5 @@ module.exports = {
   User,
   Product
 }
+
+Order.belongsTo(User);
