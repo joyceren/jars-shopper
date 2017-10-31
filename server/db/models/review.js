@@ -22,4 +22,4 @@ const Review = db.define('review', {
   },
 })
 
-module.exports = Reviews;
+module.exports = Review;
