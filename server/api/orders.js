@@ -39,6 +39,9 @@ router.put('/:id', (req, res, next) => {
   Order.update(req.body, {
     where: {
       id: req.params.id
-    }
+    },
+    returning: true,
   })
+  .then(order => res.json(order))
+  .catch(next)
 })
