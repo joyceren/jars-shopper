@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-const User = require('./user');
 
 const Order = db.define('order', {
       date: {
@@ -15,5 +14,4 @@ const Order = db.define('order', {
 );
 
 module.exports = Order;
-
 
