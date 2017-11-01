@@ -8,37 +8,41 @@ import { fetchProduct } from '../store'
 //change to class with componentDidMount and componentWillReceiveProps
 class SingleProduct extends React.Component {
   componentDidMount() {
-    this.props.getProduct();
+    this.props.getProduct(Number(this.props.match.params.id));
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //
-  // }
+  componentWillReceiveProps(nextProps) {
+    this.props = nextProps;
+  }
   // I'm not sure whtat this does?
 
   render () {
+    console.log(this.props)
+    const product = this.props.product;
     return(
         <div>
-            <h1>{props.product.title}</h1>
-            <img src = {props.product.image}/>
-            <h3>{props.product.description}</h3>
+            <h1>{product.title}</h1>
+            <img src = {product.image}/>
+            <h3>{product.description}</h3>
         </div>
     )
   }
 }
 
 
-const mapStateToProps = function (state, ownProps) {
-  // console.log(state, ownProps)
-  // return {
-  //   product: state.products.find(product => product.id===Number(ownProps.match.params.id))
-  // }
+const mapStateToProps = function (state) {
+  console.log(state)
+  return {
+     product: state.product
+  }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  getProduct () {
-    dispatch(fetchProduct())
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getProduct (id){
+      dispatch(fetchProduct(id))
+    }
   }
-})
+}
 
-export default(connect(mapStateToProps)(SingleProduct));
+export default(connect(mapStateToProps, mapDispatchToProps)(SingleProduct));
