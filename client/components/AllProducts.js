@@ -1,7 +1,8 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getProductsThunk} from './reducers'
+import { fetchProducts } from '../store'
+
 
 const mapStateToProps = function (state) {
     return {
@@ -21,7 +22,7 @@ const mapDispatchToProps = function (dispatch) {
 const AllProducts = (props) => {
     return(
         <div>
-            {props.products.map( product =>{
+            {props.products.map( product => {
                 return (
                     <div key={product.id} className="ProductListItem" >
                         <img src = {product.image} />
