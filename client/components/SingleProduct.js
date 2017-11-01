@@ -5,28 +5,21 @@ import { fetchProduct } from '../store'
 
 
 function SingleProduct(props){
+  console.log('props of SingleProduct=',props)
   return(
       <div>
           <h1>{props.product.title}</h1>
           <img src = {props.product.image}/>
           <h3>{props.product.description}</h3>
-          {
-            props.product.reviews.map(review => {
-              return (
-                <div>
-                </div>
-              )
-            })
-          }
-
-
       </div>
   )
 }
 
 
 const mapStateToProps = function (state, ownProps) {
-
+  return {
+    product: state.products.find(product => product.id===Number(ownProps.match.params.id))
+  }
 }
 
 export default(connect(mapStateToProps)(SingleProduct));

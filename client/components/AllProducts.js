@@ -7,17 +7,8 @@ import { fetchProducts } from '../store'
 const mapStateToProps = function (state) {
     return {
         products: state.products,
-    };
-};
-
-const mapDispatchToProps = function (dispatch) {
-    return {
-        getAllProducts: () => {
-            dispatch(fetchProducts())
-        }
-    };
-};
-
+    }
+}
 
 const AllProducts = (props) => {
     return(
@@ -37,6 +28,4 @@ const AllProducts = (props) => {
 
 
 
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(AllProducts);
+export default connect(mapStateToProps)(AllProducts);
