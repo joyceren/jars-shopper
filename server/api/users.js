@@ -1,5 +1,6 @@
 const router = require('express').Router()
-const {User} = require('../db/models')
+const {User, Order} = require('../db/models');
+
 module.exports = router
 
 router.get('/', (req, res, next) => {
@@ -11,4 +12,43 @@ router.get('/', (req, res, next) => {
   })
     .then(users => res.json(users))
     .catch(next)
+})
+
+router.get('/:id', (req, res, next) => {
+  User.findOne({
+    where: {
+      id: req.params.id
+    },
+    include: [Order]
+  })
+    .then(user => res.json(user))
+    .catch(next)
+})
+
+router.put('/:id', (req, res, next) => {
+  User.findById(req.params.id)
+    .then(user => user.update(req.body)
+    .then(user => res.status(200).json(user))
+    .catch(next)
+})
+
+router.post('/', (req, res, next) => {
+  User.findOrCreate({
+    where: {
+      email: req.body.email
+    },
+    defaults: req.body
+  })
+    .then(user => res.json(user))
+    .catch(next)
+})
+
+router.delete('/:id', (req, res, next) => {
+  User.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(() => res.status(204).end())
+    .catch(next);
 })
