@@ -19,7 +19,7 @@ export default function reducer (state=[], action) {
         case GET_ONE_PRODUCT:
         return action.products;
 
-        case GET_PRODUCTS :
+        case GET_PRODUCTS:
         return  action.products;
 
         default:
