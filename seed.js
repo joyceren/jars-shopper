@@ -30,29 +30,19 @@ const categories = [
 ]
 
 const productCategories = [
-  { productId: 1, categoryId: 1},
-  { productId: 2, categoryId: 3},
-  { productId: 1, categoryId: 2},
-  { productId: 3, categoryId: 4},
-  { productId: 4, categoryId: 4}
+  { productId: 1, categoryId: 1 },
+  { productId: 2, categoryId: 3 },
+  { productId: 1, categoryId: 2 },
+  { productId: 3, categoryId: 4 },
+  { productId: 4, categoryId: 4 }
 
 ]
 
 const orders = [
-  { date: '2016-08-09 07:42:28', products: [{ id: 1, title: 'Dragon1', description: 'dragon 1', price: '82', quantity: 7 },
-  { id: 2, title: 'Dragon2', description: 'dragon 2', price: '97',
-quantity: 4 }], userId: 1},
- { date: '2016-08-09 07:42:28', products: [ { id: 3, title: 'Dragon3', description: 'dragon 3', price: 67,
- quantity: 2 },
-  { id: 4, title: 'Dragon4', description: 'dragon 4', price: 88,
-   quantity: 9, image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Komodo_dragon01.JPG/220px-Komodo_dragon01.JPG' }
- ], userId: 2 },
- { date: '2016-08-09 07:42:28', products: [{ id: 1, title: 'Dragon1', description: 'dragon 1', price: '82', quantity: 7 },
- { id: 2, title: 'Dragon2', description: 'dragon 2', price: '97',
-quantity: 4 }]}
+  { date: '2016-08-09 07:42:28', userId: 1 },
+  { date: '2016-08-09 07:42:28', userId: 2 },
+  { date: '2016-08-09 07:42:28', userId: 3 }
 ]
-
-
 
 const seed = () =>
   Promise.all(products.map(product =>
