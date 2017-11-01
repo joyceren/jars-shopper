@@ -40,8 +40,8 @@ const productCategories = [
 
 const orders = [
   { date: '2016-08-09 07:42:28', userId: 1 },
-  { date: '2016-08-09 07:42:28', userId: 2 },
-  { date: '2016-08-09 07:42:28', userId: 3 }
+  { date: '2016-08-09 07:42:28', status: 'Closed', userId: 2 },
+  { date: '2016-08-09 07:42:28', status: 'Paid', userId: 3 }
 ]
 
 const orderProducts = [

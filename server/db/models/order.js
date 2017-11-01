@@ -5,6 +5,10 @@ const Order = db.define('order', {
       date: {
         type: Sequelize.DATE,
         allowNull: false
+      },
+      status: {
+        type: Sequelize.ENUM('Open', 'Paid', 'Shipped', 'Closed'),
+        defaultValue: 'Open'
       }
   }
 );
