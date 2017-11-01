@@ -3,6 +3,8 @@ const Review = require('./review')
 const Product = require('./product')
 const Order = require('./order')
 const Category = require('./category')
+const db = require('../db')
+const Sequelize = require('sequelize')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -11,13 +13,32 @@ const Category = require('./category')
  *    BlogPost.belongsTo(User)
  */
 
+ const ProductCategories = db.define('product_categories', {})
+ const OrderProducts = db.define('order_products', {
+   currentPrice: {
+     type: Sequelize.FLOAT,
+     allowNull: false,
+   },
+   quantity: {
+     type: Sequelize.INTEGER,
+     allowNull: false,
+   }
+ });
+
  Review.belongsTo(User);
  Review.belongsTo(Product);
+
  Product.hasMany(Review);
- Product.belongsToMany(Category, {through: 'product_category'});
+ Product.belongsToMany(Category, {through: ProductCategories})
+ Product.belongsToMany(Order, {through: OrderProducts })
+
  Order.belongsTo(User);
+ Order.hasMany(Product);
+
  User.hasMany(Order);
  User.hasMany(Review);
+
+ Category.hasMany(Product);
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,
@@ -31,6 +52,7 @@ module.exports = {
   Product,
   Order,
   Category,
-  Review
+  Review,
+  ProductCategories,
+  OrderProducts
 }
-
