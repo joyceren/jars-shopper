@@ -27,6 +27,7 @@ router.post('/', (req, res, next) => {
     where: req.body,
     defaults: req.body,
   })
+
     .then(category => res.json(category))
     .catch(next)
 })
@@ -42,12 +43,8 @@ router.delete('/:name', (req, res, next) => {
 })
 
 router.put('/:name', (req, res, next) => {
-  Category.update(req.body, {
-    where: {
-      name: req.params.name
-    },
-    returning: true
-  })
+  Category.findById(req.params.id)
+    .then(category => category.update(req.body)
     .then(updatedCategory => res.json(updatedCategory))
     .catch(next)
 })
