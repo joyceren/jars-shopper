@@ -1,5 +1,5 @@
 const db = require('./server/db/index');
-const { Product, Order, User, Review, Category, ProductCategory } = require('./server/db/models/index');
+const { Product, Order, User, Review, Category, ProductCategories, OrderProducts } = require('./server/db/models/index');
 
 
 const users = [{ email: 'thequeen@england.com', password: 'password', googleId: 'queeny' },
@@ -44,6 +44,17 @@ const orders = [
   { date: '2016-08-09 07:42:28', userId: 3 }
 ]
 
+const orderProducts = [
+  { currentPrice: 82, quantity: 2, productId: 1, orderId: 1 },
+  { currentPrice: 77, quantity: 1, productId: 2, orderId: 1 },
+  { currentPrice: 22, quantity: 1, productId: 3, orderId:
+  2 },
+  { currentPrice: 13, quantity: 2, productId: 4, orderId: 2 },
+  { currentPrice: 56, quantity: 1, productId: 2, orderId:
+  3}
+
+]
+
 const seed = () =>
   Promise.all(products.map(product =>
     Product.create(product))
@@ -66,8 +77,12 @@ const seed = () =>
   ))
   .then(() =>
   Promise.all(productCategories.map(productCategory =>
-    ProductCategory.create(productCategory))
-  ));
+    ProductCategories.create(productCategory))
+  ))
+  .then(() =>
+  Promise.all(orderProducts.map(orderProduct =>
+    OrderProducts.create(orderProduct))
+  ))
 
 const main = () => {
   console.log('Syncing db...');
