@@ -26,14 +26,10 @@ router.get('/:id', (req, res, next) => {
 })
 
 router.put('/:id', (req, res, next) => {
-  User.update(req.body, {
-    where: {
-      id: req.params.id
-    },
-    returning: true
-  })
-   .then(user => res.status(200).json(user))
-   .catch(next)
+  User.findById(req.params.id)
+    .then(user => user.update(req.body)
+    .then(user => res.status(200).json(user))
+    .catch(next)
 })
 
 router.post('/', (req, res, next) => {

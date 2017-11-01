@@ -5,6 +5,7 @@ const Order = require('./order')
 const Category = require('./category')
 const db = require('../db')
 const Sequelize = require('sequelize')
+const OrderProducts = require('./orderProducts')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -13,17 +14,7 @@ const Sequelize = require('sequelize')
  *    BlogPost.belongsTo(User)
  */
 
- const ProductCategories = db.define('product_categories', {})
- const OrderProducts = db.define('order_products', {
-   currentPrice: {
-     type: Sequelize.FLOAT,
-     allowNull: false,
-   },
-   quantity: {
-     type: Sequelize.INTEGER,
-     allowNull: false,
-   }
- });
+ const ProductCategories = db.define('product_categories', {});
 
  Review.belongsTo(User);
  Review.belongsTo(Product);
