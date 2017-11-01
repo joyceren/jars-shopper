@@ -27,6 +27,7 @@ router.post('/', (req, res, next) => {
     where: req.body,
     defaults: req.body,
   })
+
     .then(category => res.json(category))
     .catch(next)
 })
