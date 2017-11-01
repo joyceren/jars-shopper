@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchProducts} from '../store'
+import { fetchProducts } from '../store'
 
 
 const mapStateToProps = function (state) {

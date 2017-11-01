@@ -18,9 +18,12 @@ export default function reducer (state=[], action) {
         //Also, probably dont need the single product case, does it need to go somewhere else?
         case GET_ONE_PRODUCT:
         return action.products;
-  
+
         case GET_PRODUCTS :
         return  action.products;
+
+        default:
+        return state;
     }
 }
 
@@ -45,6 +48,5 @@ export function fetchProduct(id) {
               const action = getOneProduct(product);
               dispatch(action)
           })
-  }   
+  }
 }
-
