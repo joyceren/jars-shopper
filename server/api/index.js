@@ -15,6 +15,7 @@ router.use(bodyParser.json());
 router.use('/users', require('./users'))
 router.use('/products', require('./products'));
 router.use('/orders', require('./orders'));
+router.use('/categories', require('./categories'));
 
 router.use((err, req, res, next) => {
 console.error(err.stack);
