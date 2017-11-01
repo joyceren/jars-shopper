@@ -5,7 +5,7 @@ module.exports = router
 
 router.get('/', (req, res, next) => {
   Category.findAll(
-    include: [ Product ]
+    {include: [ Product ]}
   )
     .then(category => res.json(category))
     .catch(next)
@@ -23,31 +23,28 @@ router.get('/:name', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
-  Category.findOrCreate(
+  Category.findOrCreate({
     where: req.body,
     defaults: req.body,
-  )
+  })
+
     .then(category => res.json(category))
     .catch(next)
 })
 
 router.delete('/:name', (req, res, next) => {
-  Category.destroy(
+  Category.destroy({
     where: {
       name: req.params.name
     }
-  )
+  })
     .then(() => res.sendStatus(204))
     .catch(next);
 })
 
 router.put('/:name', (req, res, next) => {
-  Category.update(req.body, {
-    where: {
-      name: req.params.name
-    },
-    returning: true
-  })
+  Category.findById(req.params.id)
+    .then(category => category.update(req.body)
     .then(updatedCategory => res.json(updatedCategory))
     .catch(next)
 })
