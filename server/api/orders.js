@@ -3,6 +3,8 @@ const { Order } = require('../db/models');
 
 module.exports = router
 
+//When do you make a order? For unauth users/auth users?
+
 router.get('/', (req, res, next) => {
   Order.findAll()
   .then(orders => res.json(orders))
@@ -35,6 +37,8 @@ router.delete('/:id', (req, res, next) => {
   .catch(next)
 })
 
+
+//make sure to update quantities => use associations
 router.put('/:id', (req, res, next) => {
   Order.update(req.body, {
     where: {
