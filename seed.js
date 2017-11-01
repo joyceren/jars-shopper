@@ -2,9 +2,9 @@ const db = require('./server/db/index');
 const { Product, Order, User, Review, Category, ProductCategories, OrderProducts } = require('./server/db/models/index');
 
 
-const users = [{ email: 'thequeen@england.com', password: 'password', googleId: 'queeny' },
-                { email: 'theking@england.com', password: '123', googleId: 'bigboss' },
-              { email: 'jonsnow@thenorth.com', password: 'iknownothing', googleId: 'jonnysnow' },
+const users = [{ email: 'thequeen@england.com', password: 'password', googleId: 'queeny', isAdmin: false },
+                { email: 'theking@england.com', password: '123', googleId: 'bigboss', isAdmin: false },
+              { email: 'jonsnow@thenorth.com', password: 'iknownothing', googleId: 'jonnysnow', isAdmin: false },
             ];
 
 const reviews = [
@@ -15,9 +15,9 @@ const reviews = [
 ];
 
 const products = [
-  { title: 'Dragon1', description: 'dragon 1', price: '82', quantity: 7 },
+  { title: 'Dragon1', description: 'dragon 1', price: '82', quantity: 7},
   { title: 'Dragon2', description: 'dragon 2', price: '97',
-quantity: 4 },
+quantity: 4},
 { title: 'Dragon3', description: 'dragon 3', price: 67,
 quantity: 2 },
  { title: 'Dragon4', description: 'dragon 4', price: 88,
