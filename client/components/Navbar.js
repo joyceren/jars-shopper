@@ -6,6 +6,9 @@ import {logout} from '../store';
 
 const Navbar = (props) => {
   const {handleClick, isLoggedIn} = props
+
+
+
   return (
     <nav className="navbar">
       <Link to="/"> <h2>Dragon Adoption Agency </h2> </Link>
@@ -23,12 +26,13 @@ const Navbar = (props) => {
               </div>
           }
         <div className='navbar-buttons'>
-          {/* <NavLink to="/campuses"><button>Campuses</button></NavLink>
-          <NavLink to="/students"><button>Students</button></NavLink> */}
+          <Link to="/cart"><button><img src="https://d30y9cdsu7xlg0.cloudfront.net/png/28468-200.png" alt="my image" onClick={ () => console.log('CLICKED')} /></button> </Link>
       </div>
     </nav>
   )
 };
+
+
 
 const mapState = (state) => {
   return {
