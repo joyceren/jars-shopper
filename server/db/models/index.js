@@ -30,15 +30,15 @@ const Sequelize = require('sequelize')
 
  Product.hasMany(Review);
  Product.belongsToMany(Category, {through: ProductCategories})
- Product.belongsToMany(Order, {through: OrderProducts })
+ Category.belongsToMany(Product, {through: ProductCategories})
+ Product.belongsToMany(Order, {through: OrderProducts})
 
  Order.belongsTo(User);
- Order.hasMany(Product);
+ Order.belongsToMany(Product, {through: OrderProducts })
 
  User.hasMany(Order);
  User.hasMany(Review);
 
- Category.hasMany(Product);
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,
