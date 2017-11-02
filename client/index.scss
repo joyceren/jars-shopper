@@ -20,7 +20,26 @@ body {
   }
 }
 
-.productListItem {
+img {
   height: 200px;
-  width: 200px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-img {
+  height:42px;
+  width:42px;
+}
+
+.all-products {
+  display: flex;
+  justify-content: space-between;
+}
+
+.home-img {
+  height: auto;
+  width: 90%;
 }

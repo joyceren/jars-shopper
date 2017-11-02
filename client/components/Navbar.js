@@ -25,7 +25,7 @@ const Navbar = (props) => {
               </div>
           }
         <div className='navbar-buttons'>
-          <Link to="/cart"><button><img src="https://d30y9cdsu7xlg0.cloudfront.net/png/28468-200.png" alt="my image" onClick={ () => console.log('CLICKED')} /></button> </Link>
+          <Link to="/cart"><button><img src="https://d30y9cdsu7xlg0.cloudfront.net/png/28468-200.png" alt="my image" className='cart-img' onClick={ () => console.log('CLICKED')} /></button> </Link>
       </div>
     </nav>
   )

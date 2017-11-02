@@ -12,17 +12,21 @@ const mapStateToProps = function (state) {
 
 const AllProducts = (props) => {
     return(
-        <div className='all-products'>
+        <div>
           <h2>All of our Dragons!</h2>
-            {props.products.map( product => {
-                return (
-                    <div key={product.id} className="ProductListItem" >
-                        <img src = {product.image} />
-                        <h3>{product.title}</h3>
-                        <h4>{product.price}</h4>
-                    </div>
-                )
-            })}
+            <div className='all-products'>
+              {props.products.map( product => {
+                  return (
+                    <Link to={`/products/${product.id}`}>
+                      <div key={product.id} className="ProductListItem" >
+                          <img src = {product.image} />
+                          <h3>{product.title}</h3>
+                          <h4>${product.price}</h4>
+                      </div>
+                    </Link>
+                  )
+              })}
+            </div>
         </div>
     )
 }
