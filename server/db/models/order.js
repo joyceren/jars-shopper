@@ -7,8 +7,8 @@ const Order = db.define('order', {
         allowNull: false
       },
       status: {
-        type: Sequelize.ENUM('Open', 'Paid', 'Shipped', 'Closed'),
-        defaultValue: 'Open'
+        type: Sequelize.ENUM('Created', 'Processing', 'Canceled', 'Completed'),
+        defaultValue: 'Created'
       }
   }
 );

@@ -44,7 +44,7 @@ router.delete('/:name', (req, res, next) => {
 
 router.put('/:name', (req, res, next) => {
   Category.findById(req.params.id)
-    .then(category => category.update(req.body)
+    .then(category => category.update(req.body))
     .then(updatedCategory => res.json(updatedCategory))
     .catch(next)
 })
