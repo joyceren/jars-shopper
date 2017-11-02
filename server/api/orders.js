@@ -3,6 +3,8 @@ const { Order, Product } = require('../db/models');
 
 module.exports = router
 
+
+
 router.get('/', (req, res, next) => {
   Order.findAll({
     include: [ Product ]
