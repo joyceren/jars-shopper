@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 import {logout} from '../store'
-import Navbar from './Navbar.js'
+import Navbar from './Navbar'
+import Sidebar from './Sidebar'
 
 /**
  * COMPONENT
@@ -18,9 +19,24 @@ const Main = (props) => {
     <div>
       <Navbar />
       <hr />
-      {children}
+      <div className="main-container">
+        <div className="sidebar-container">
+          <Sidebar />
+        </div>
+        <div className="children-container">
+          {children}
+        </div>
+      </div>
     </div>
   )
+
+  // return (
+  //   <div>
+  //     <Navbar />
+  //     <hr />
+  //     <Link to='/products'><button>See Our Dragons!</button></Link>
+  //   </div>
+  // )
 }
 
 /**

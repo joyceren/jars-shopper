@@ -4,15 +4,22 @@ import { connect } from 'react-redux';
 
 
 class Cart extends Component {
-constructor() {
-  super();
+  constructor() {
+    super();
+  }
+
+  render() {
+    return (
+      <div>
+      <h1>CART</h1>
+      </div>
+    )
+  }
 }
 
-render() {
-  return (
-<div>
-</div>
-  )
-}
+function mapState(state) {
+  return {state}
 
 }
+
+export default connect(mapState)(Cart)

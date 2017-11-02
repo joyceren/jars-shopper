@@ -1,11 +1,11 @@
 const express = require('express')
-const { Review, Product, Category } = require('../db/models');
+const { Review, Product, Category, User } = require('../db/models');
 
 const router = new express.Router();
 
 router.get('/', function(req, res, next){
 	Product.findAll({
-		include: [ Review, Category ]
+		include: [ {model: Review, include: [{all: true }]}, Category ]
 	})
 		.then(products => res.json(products))
 		.catch(next)
@@ -13,7 +13,7 @@ router.get('/', function(req, res, next){
 
 router.get('/:id', function(req, res, next){
 	Product.findById(req.params.id, {
-		include: [ Review, Category ]
+		include: [ {model: Review, include: [{all: true }]}, Category ]
 	})
 		.then(product => {
 			if (!product) res.sendStatus(404)

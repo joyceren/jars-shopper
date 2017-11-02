@@ -8,10 +8,9 @@ const Navbar = (props) => {
   const {handleClick, isLoggedIn} = props
 
 
-
   return (
     <nav className="navbar">
-      <Link to="/"> <h2>Dragon Adoption Agency </h2> </Link>
+      <Link to="/"> <h1>Dragon Adoption Agency </h1> </Link>
           {
             isLoggedIn
               ? <div>
@@ -26,7 +25,7 @@ const Navbar = (props) => {
               </div>
           }
         <div className='navbar-buttons'>
-          <Link to="/cart"><button><img src="https://d30y9cdsu7xlg0.cloudfront.net/png/28468-200.png" alt="my image" onClick={ () => console.log('CLICKED')} /></button> </Link>
+          <Link to="/cart"><button><img src="https://d30y9cdsu7xlg0.cloudfront.net/png/28468-200.png" alt="my image" className='cart-img' onClick={ () => console.log('CLICKED')} /></button> </Link>
       </div>
     </nav>
   )

@@ -2,18 +2,18 @@ import axios from 'axios';
 
 /* ACTION TYPES */
 
-const GET_PRODUCTS = 'GET_PRODUCTS';
+const GET_CATEGORIES = 'GET_CATEGORIES';
 
 /* ACTION CREATORS */
 
-const getAll = products => ({ type: GET_PRODUCTS, products})
+const getCategories = categories => ({ type: GET_CATEGORIES, categories})
 
 /* REDUCERS */
 
 export default function reducer (state=[], action) {
     switch (action.type) {
-        case GET_PRODUCTS:
-        return  action.products;
+        case GET_CATEGORIES:
+        return  action.categories;
         default:
         return state;
     }
@@ -21,12 +21,12 @@ export default function reducer (state=[], action) {
 
 /* THUNK */
 
-export function fetchProducts () {
+export function fetchCategories () {
   return function thunk (dispatch) {
-    return axios.get('/api/products')
+    return axios.get('/api/categories')
       .then(res => res.data)
-      .then(products => {
-        const action = getAll(products);
+      .then(categories => {
+        const action = getCategories(categories);
         dispatch(action);
       });
 };
