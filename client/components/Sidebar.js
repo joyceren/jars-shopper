@@ -7,15 +7,17 @@ import store from '../store'
 const Sidebar = (props) =>  {
 
     return (
-      <div>
+      <sidebar>
         {props.categories.map((cat)=> {
           return (
             <div key= {cat.id} >
-            <h2>{cat.name}</h2>
+              <Link to={`/categories/${cat.name}`}>
+                <h2>{cat.name}</h2>
+              </Link>
             </div>
-        )
+          )
       })}
-      </div>
+      </sidebar>
     )
 
 }

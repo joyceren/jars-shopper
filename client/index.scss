@@ -1,8 +1,14 @@
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
 body {
   font-family: sans-serif;
 
   a {
     text-decoration: none;
+    color:auto;
   }
 
   label {
@@ -41,5 +47,21 @@ img {
 
 .home-img {
   height: auto;
-  width: 90%;
+  width: 50%;
+}
+
+.main-container{
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+}
+
+.sidebar-container{
+  padding: 50px;
+  background-color: lightgrey;
+  color:white;
+}
+
+.children-container{
+  padding:50px;
 }
