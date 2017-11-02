@@ -7,18 +7,25 @@ class Order extends React.Component {
 constructor() {
     super();
   }
-  
+
   render() {
     return (
   <div>
-  
+
   </div>
     )
   }
 
+
+}
+
+const mapStateToProps = function(state) {
+  return {
+    order: state.order
   }
+}
 
-
+connect(mapStateToProps)(Order);
 
 
 

@@ -60,6 +60,7 @@ const mapDispatch = (dispatch) => {
     loadInitialData () {
       dispatch(me())
       dispatch(fetchProducts())
+      dispatch(fetchOrder())
     }
   }
 }
