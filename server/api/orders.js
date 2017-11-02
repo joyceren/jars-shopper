@@ -40,7 +40,12 @@ router.delete('/:id', (req, res, next) => {
 
 router.put('/:id', (req, res, next) => {
   Order.findById(req.params.id)
-    .then(order => order.update(req.body))
-    .then(order => res.json(order))
+    .then(order => order.update(req.body.order))
+    .then(order => order.setProduct(req.body.product, {
+      through: {
+        quantity: req.body.quantity,
+        currentPrice: req.body.currentPrice
+      }
+    }))
     .catch(next)
 })
