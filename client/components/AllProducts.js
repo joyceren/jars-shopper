@@ -17,13 +17,13 @@ const AllProducts = (props) => {
             <div className='all-products'>
               {props.products.map( product => {
                   return (
-                    <Link to={`/products/${product.id}`}>
-                      <div key={product.id} className="ProductListItem" >
+                    <div key={product.id} className="ProductListItem" >
+                      <Link to={`/products/${product.id}`}>
                           <img src = {product.image} />
                           <h3>{product.title}</h3>
                           <h4>${product.price}</h4>
-                      </div>
-                    </Link>
+                      </Link>
+                    </div>
                   )
               })}
             </div>
