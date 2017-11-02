@@ -16,10 +16,8 @@ const reviews = [
 
 const products = [
   { title: 'Dragon1', description: 'dragon 1', price: '82', quantity: 7},
-  { title: 'Dragon2', description: 'dragon 2', price: '97',
-quantity: 4},
-{ title: 'Dragon3', description: 'dragon 3', price: 67,
-quantity: 2 },
+  { title: 'Dragon2', description: 'dragon 2', price: '97', quantity: 4},
+{ title: 'Dragon3', description: 'dragon 3', price: 67, quantity: 2 },
  { title: 'Dragon4', description: 'dragon 4', price: 88,
   quantity: 9, image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Komodo_dragon01.JPG/220px-Komodo_dragon01.JPG' }
 

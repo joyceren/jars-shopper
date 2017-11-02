@@ -1,12 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link, withRouter} from 'react-router-dom';
-import { fetchProduct } from '../store'
+import { fetchProduct, fetchUser } from '../store'
+import axios from 'axios';
 
 
 
 //change to class with componentDidMount and componentWillReceiveProps
 class SingleProduct extends React.Component {
+
   componentDidMount() {
     this.props.getProduct(Number(this.props.match.params.id));
   }
@@ -14,16 +16,57 @@ class SingleProduct extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.props = nextProps;
   }
-  // I'm not sure whtat this does?
+  // I'm not sure what this does?
 
   render () {
-    console.log(this.props)
+
     const product = this.props.product;
+    const qtyArr = new Array(10).fill(0)
+    console.log(product.reviews)
+
+
     return(
         <div>
-            <h1>{product.title}</h1>
+            <h1>{product.title}  ${product.price}</h1>
             <img src = {product.image}/>
-            <h3>{product.description}</h3>
+
+            <div className="AddToCart">
+              <form onSubmit={evt => {
+                evt.preventDefault()
+                console.log(`Added something to the cart! (kind of)`)
+              }}>
+                <select>
+                  {qtyArr.map((e, i) => (
+                    <option key={i} value={i+1}>{i+1}</option>
+                  ))}
+                </select>
+                <input type="submit" value="Add to Cart"></input>
+              </form>
+            </div>
+
+            <div className="product-description">
+
+              <h3>Inventory: {product.quantity}</h3>
+              <p>{product.description}</p>
+
+              <div className='reviews-container'>
+                <h2>Reviews</h2>
+                {
+                  product.reviews && product.reviews.map(review => {
+
+                    return(
+                    <div key={review.id} className="single-review">
+                      <h3>{review.title}</h3>
+                      <div>{'+'.repeat(review.stars)}</div>
+                      <h4>{review.user.googleId}</h4>
+                      <p>{review.text}</p>
+                    </div>
+                  )})
+                }
+              </div>
+
+            </div>
+
         </div>
     )
   }
@@ -31,16 +74,19 @@ class SingleProduct extends React.Component {
 
 
 const mapStateToProps = function (state) {
-  console.log(state)
   return {
      product: state.product
+    //  isLoggedin: state.isLoggedin
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getProduct (id){
+    getProduct(id) {
       dispatch(fetchProduct(id))
+    },
+    getUser(id) {
+      dispatch(fetchUser(id))
     }
   }
 }

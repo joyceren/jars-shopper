@@ -8,10 +8,9 @@ const Navbar = (props) => {
   const {handleClick, isLoggedIn} = props
 
 
-
   return (
     <nav className="navbar">
-      <Link to="/"> <h2>Dragon Adoption Agency </h2> </Link>
+      <Link to="/"> <h1>Dragon Adoption Agency </h1> </Link>
           {
             isLoggedIn
               ? <div>

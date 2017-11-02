@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 import {logout} from '../store'
 import Navbar from './Navbar.js'
 
@@ -21,6 +21,14 @@ const Main = (props) => {
       {children}
     </div>
   )
+
+  // return (
+  //   <div>
+  //     <Navbar />
+  //     <hr />
+  //     <Link to='/products'><button>See Our Dragons!</button></Link>
+  //   </div>
+  // )
 }
 
 /**

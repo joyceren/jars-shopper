@@ -12,7 +12,8 @@ const mapStateToProps = function (state) {
 
 const AllProducts = (props) => {
     return(
-        <div>
+        <div className='all-products'>
+          <h2>All of our Dragons!</h2>
             {props.products.map( product => {
                 return (
                     <div key={product.id} className="ProductListItem" >
