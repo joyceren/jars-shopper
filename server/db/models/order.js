@@ -8,7 +8,7 @@ const Order = db.define('order', {
       status: {
         type: Sequelize.ENUM('Open', 'Processing', 'Canceled', 'Completed'),
         defaultValue: 'Open'
-      }
+      },
   }
 );
 
