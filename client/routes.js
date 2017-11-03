@@ -23,7 +23,8 @@ class Routes extends Component {
       <Router history={history}>
         <Main>
           <Switch>
-            {/* Routes placed here are available to all visitors */}
+            {/* Routes placed here are available to all visitors
+            - Question: is switch necessary if we're using exact? */}
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route exact path="/products" component = {AllProducts} />
@@ -31,6 +32,7 @@ class Routes extends Component {
             <Route path="/categories/:name" component = {Category} />
             <Route exact path="/categories" component = {Sidebar} />
             <Route path="/cart" component = {Cart} />
+            <Route exact path="/" component = {Home} />
 
             {
               isLoggedIn &&
