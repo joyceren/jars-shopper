@@ -7,7 +7,8 @@ import store from '../store'
 const Sidebar = (props) =>  {
 
     return (
-      <sidebar>
+      <nav>
+        <h2>Types:</h2>
         {props.categories.map((cat)=> {
           return (
             <div key= {cat.id} >
@@ -17,7 +18,7 @@ const Sidebar = (props) =>  {
             </div>
           )
       })}
-      </sidebar>
+      </nav>
     )
 
 }
