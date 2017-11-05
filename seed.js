@@ -46,11 +46,13 @@ const productCategories = [
 ]
 
 const orders = [
-  { date: '2016-08-09 07:42:28', status: 'Open', userId: 1},
-  { date: '2016-08-09 07:42:28', status: 'Completed', userId: 2 },
-  { date: '2016-08-09 07:42:28', status: 'Processing', userId: 3 },
-  { date: '2016-08-09 07:42:28', status: 'Processing', userId: 1 },
-  { date: '2016-08-09 07:42:28', status: 'Completed', userId: 1 },
+  { id: 1,date: '2016-08-09 07:42:28', status: 'Open', userId: 1},
+  { id: 2, date: '2016-08-09 07:42:28', status: 'Completed', userId: 2 },
+  { id: 3, date: '2016-08-09 07:42:28', status: 'Processing', userId: 3 },
+  { id: 4, date: '2016-08-09 07:42:28', status: 'Processing', userId: 1 },
+  { id: 5, date: '2016-08-09 07:42:28', status: 'Completed', userId: 1 },
+  { id: 6, date: "2017-09-01 12:00:00", status: "Open", userId: 2},
+  { id: 7, date: "2017-09-01 12:00:00", status: "Open", userId: 3},
 ]
 
 const orderProducts = [
@@ -58,7 +60,14 @@ const orderProducts = [
   { currentPrice: 77, quantity: 1, productId: 2, orderId: 1 },
   { currentPrice: 22, quantity: 1, productId: 3, orderId: 2 },
   { currentPrice: 13, quantity: 2, productId: 4, orderId: 2 },
-  { currentPrice: 56, quantity: 1, productId: 2, orderId: 3}
+  { currentPrice: 56, quantity: 1, productId: 2, orderId: 3 },
+  { currentPrice: 56, quantity: 1, productId: 5, orderId: 6 },
+  { currentPrice: 90, quantity: 1, productId: 9, orderId: 6 },
+  { currentPrice: 12, quantity: 1, productId: 2, orderId: 6 },
+  { currentPrice: 40, quantity: 1, productId: 8, orderId: 5 },
+  { currentPrice: 9, quantity: 1, productId: 6, orderId: 4 },
+  { currentPrice: 1, quantity: 1, productId: 7, orderId: 4 },
+  { currentPrice: 18, quantity: 1, productId: 7, orderId: 7 },
 ]
 
 const seed = () =>
