@@ -18,6 +18,7 @@ class Routes extends Component {
 
   render () {
     const {isLoggedIn} = this.props
+    console.log(this.props)
 
     return (
       <Router history={history}>
@@ -57,17 +58,19 @@ const mapState = (state) => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+
   }
 }
 
 const mapDispatch = (dispatch) => {
   return {
-    loadInitialData () {
+    loadInitialData (userId) {
       dispatch(me())
       dispatch(fetchProducts())
-      // dispatch(fetchOrder())
       dispatch(fetchCategories())
+      if(userId) dispatch(fetchOrder(userId))
+      console.log("initial data loaded")
     }
   }
 }

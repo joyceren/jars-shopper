@@ -19,7 +19,7 @@ const reducer = combineReducers({
   categories,
   selectedOrder,
   categoryProducts,
-  // userOrders
+  userOrders
 })
 
 const middleware = composeWithDevTools(applyMiddleware(

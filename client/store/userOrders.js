@@ -14,10 +14,10 @@ export default function (state = [], action) {
   }
 }
 
-export const fetchUserOrders = (userId) => {
+export function fetchUserOrders (userId) {
   return function thunk (dispatch) {
-      return axios.get(`/api/orders/users/${userId}`)
+      return axios.get(`/api/orders/user/${userId}`)
         .then(res => res.data)
-        .then(order => dispatch(getUserOrdersActionCreator(orders)))
+        .then(orders => dispatch(getUserOrdersActionCreator(orders)))
   }
 }

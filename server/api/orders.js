@@ -3,7 +3,7 @@ const { Order, Product } = require('../db/models');
 
 module.exports = router
 
-
+//find all orders
 
 router.get('/', (req, res, next) => {
   Order.findAll({
@@ -13,9 +13,22 @@ router.get('/', (req, res, next) => {
   .catch(next)
 })
 
+//find open order by userId
+
+router.get('/open/user/:userId', (req, res, next) => {
+  Order.findOne({
+    where: { userId: req.params.userId, status: "Open" },
+    include: [ Product ]
+  })
+  .then(orders => res.json(orders))
+  .catch(next)
+})
+
+//find all orders by userId
+
 router.get('/user/:userId', (req, res, next) => {
   Order.findAll({
-    where: { userId: userId },
+    where: { userId: req.params.userId },
     include: [ Product ]
   })
   .then(orders => res.json(orders))

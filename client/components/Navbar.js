@@ -15,11 +15,11 @@ const Navbar = (props) => {
         <div className="dropdown-content">
           <h2>Types of Dragons</h2>
             <div>
-              <Link to={`/products`}>All</Link>
+              <Link to={`/products`}>ALL</Link>
             </div>
             {props.categories.map((cat)=> (
                 <div key= {cat.id}>
-                  <Link to={`/products/categories/${cat.name}`}>{cat.name}</Link>
+                  <Link to={`/products/categories/${cat.name}`}>{cat.name.toUpperCase()}</Link>
                 </div>
               )
             )}

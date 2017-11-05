@@ -18,10 +18,9 @@ class Category extends React.Component {
 
   render() {
     const filteredProducts = this.props.filteredCategory.products
-    console.log(filteredProducts)
     return (
       <div>
-        <h2>{this.props.match.params.name}</h2>
+        <h2>{this.props.match.params.name.toUpperCase()}</h2>
         <div className='all-products'>
           {filteredProducts && filteredProducts.map( product => {
               return (

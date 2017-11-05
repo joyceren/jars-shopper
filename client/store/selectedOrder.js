@@ -14,9 +14,9 @@ export default function reducer (state={}, action) {
     }
 }
 
-export function fetchOrder(id) {
+export function fetchOrder(userId) {
   return function thunk(dispatch) {
-      return axios.get(`/api/orders/${id}`)
+      return axios.get(`/api/orders/open/user/${userId}`)
           .then(res => res.data)
           .then(order => {
               const action = getOneOrder(order);

@@ -131,6 +131,11 @@ img {
   width: inherit;
 }
 
+.cart-header {
+  display:flex;
+  justify-content: space-between;
+}
+
 .cart-items {
   width: 75vw;
 }
