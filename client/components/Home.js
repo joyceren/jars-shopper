@@ -6,7 +6,13 @@ import {logout} from '../store'
 import Navbar from './Navbar.js'
 
 
-const Home = () => {
+class Home extends React.Component {
+
+  componentDidMount(){
+    this.props.makeCart()
+  }
+
+  render(){
     return(
       <Link to='/products'>
         <div>
@@ -15,6 +21,7 @@ const Home = () => {
         </div>
       </Link>
     )
+  }
 }
 
 const mapState = (state) => {
@@ -27,6 +34,9 @@ const mapDispatch = (dispatch) => {
   return {
     handleClick () {
       dispatch(logout())
+    },
+    makeCart () {
+      console.log("cart is made!")
     }
   }
 }

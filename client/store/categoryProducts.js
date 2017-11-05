@@ -2,18 +2,18 @@ import axios from 'axios';
 
 /* ACTION TYPES */
 
-const GET_FILTERED_CATEGORIES = 'GET_FILTERED_CATEGORIES';
+const GET_FILTERED_CATEGORY = 'GET_FILTERED_CATEGORY';
 
 /* ACTION CREATORS */
 
-const getFilteredCategories = categories => ({ type: GET_FILTERED_CATEGORIES, categories})
+const getFilteredCategories = categories => ({ type: GET_FILTERED_CATEGORY, categories})
 
 /* REDUCERS */
 
 export default function reducer (state=[], action) {
     switch (action.type) {
-        case GET_FILTERED_CATEGORIES:
-        return  action.categories.products;
+        case GET_FILTERED_CATEGORY:
+        return  action.categories;
         default:
         return state;
     }

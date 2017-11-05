@@ -10,7 +10,21 @@ const Navbar = (props) => {
 
   return (
     <nav className="navbar">
-      <Link to="/"> <h1>Dragon Adoption Agency </h1> </Link>
+      <div className="dropdown">
+        <button className="dropbtn">Categories</button>
+        <div className="dropdown-content">
+          <h2>Types of Dragons</h2>
+          {props.categories.map((cat)=> (
+              <div key= {cat.id}>
+                <Link to={`/categories/${cat.name}`}>{cat.name}</Link>
+              </div>
+            )
+          )}
+        </div>
+      </div>
+
+      <Link to="/"><h1>Dragon Adoption Agency</h1></Link>
+
           {
             isLoggedIn
               ? <div>
@@ -35,7 +49,8 @@ const Navbar = (props) => {
 
 const mapState = (state) => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    categories: state.categories
   }
 }
 

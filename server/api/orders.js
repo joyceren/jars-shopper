@@ -13,6 +13,15 @@ router.get('/', (req, res, next) => {
   .catch(next)
 })
 
+router.get('/user/:userId', (req, res, next) => {
+  Order.findAll({
+    where: { userId: userId },
+    include: [ Product ]
+  })
+  .then(orders => res.json(orders))
+  .catch(next)
+})
+
 router.get('/:id', (req, res, next) => {
   Order.findOne( {
     where: {

@@ -5,7 +5,7 @@ import {Route, Switch, withRouter} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import history from './history'
 import {Main, Home, Login, Signup, UserHome, AllProducts, SingleProduct, Cart, Category, Sidebar } from './components'
-import {me, fetchProducts, fetchCategories} from './store'
+import {me, fetchOrder, fetchProducts, fetchCategories} from './store'
 
 
 /**

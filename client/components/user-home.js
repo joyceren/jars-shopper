@@ -1,18 +1,31 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import {Link, withRouter} from 'react-router-dom';
+import fetchUserOrders from '../store'
 
 /**
  * COMPONENT
  */
-export const UserHome = (props) => {
-  const {email} = props
+export class UserHome extends React.Component {
 
-  return (
-    <div>
-      <h3>Welcome, {email}</h3>
-    </div>
-  )
+  componentDidMount() {
+    // this.props.getUserOrders(this.props.user.id)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.props=nextProps;
+  }
+
+  render() {
+    console.log(this.props)
+    const {user} = this.props
+    return (
+      <div>
+        <h3>Welcome, {user.email}</h3>
+      </div>
+    )
+  }
 }
 
 /**
@@ -20,11 +33,19 @@ export const UserHome = (props) => {
  */
 const mapState = (state) => {
   return {
-    email: state.user.email
+    user: state.user
   }
 }
 
-export default connect(mapState)(UserHome)
+const mapDispatch = (dispatch) => {
+  return {
+    getUserOrders(userId) {
+      dispatch(fetchUserOrders(userId))
+    }
+  }
+}
+
+export default connect(mapState, mapDispatch)(UserHome)
 
 /**
  * PROP TYPES
