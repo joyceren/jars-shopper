@@ -24,22 +24,21 @@ class Cart extends React.Component {
           <button>Checkout</button>
         </div>
         <div className="cart-items">
-          {cart ? cart.map(item => (
-            <div key={item.id} className="product-list-item single-cart-item">
-              <img src={item.image}/>
-              <h3>{item.title}</h3>
-              <p>${item.price}</p>
-              <h2>Qty: {item.order_products.quantity}</h2>
-              <button>X</button>
-            </div>
-          ))
-          :
-          (
+          { cart && cart.length ?
+            cart.map(item => (
+              <div key={item.id} className="product-list-item single-cart-item">
+                <img src={item.image}/>
+                <h3>{item.title}</h3>
+                <p>${item.price}</p>
+                <h2>Qty: {item.order_products.quantity}</h2>
+                <button>X</button>
+              </div>
+            ))
+            :
             <div className="product-list-item single-cart-item">
             <h1>NO ITEMS!</h1>
             </div>
-          )
-        }
+          }
         </div>
       </div>
     )
