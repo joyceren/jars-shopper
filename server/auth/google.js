@@ -13,8 +13,8 @@ module.exports = router
  * by git! In this case, you may use a file called `secrets.js`, which will
  * set these environment variables like so:
  *
- * process.env.GOOGLE_CLIENT_ID = 'your google client id= 242012662936-419t9vu9gq653khaqdavmoujq76ursju.apps.googleusercontent.com'
- * process.env.GOOGLE_CLIENT_SECRET = 'your google client secret= WQL6Yf8YYSL8S2_i1zeuLGje'
+ * process.env.GOOGLE_CLIENT_ID = '242012662936-419t9vu9gq653khaqdavmoujq76ursju.apps.googleusercontent.com'
+ * process.env.GOOGLE_CLIENT_SECRET = 'WQL6Yf8YYSL8S2_i1zeuLGje'
  * process.env.GOOGLE_CALLBACK = '/your/google/callback'
  */
 
@@ -23,6 +23,9 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
   console.log('Google client ID / secret not found. Skipping Google OAuth.')
 
 } else {
+
+  console.log(process.env.GOOGLE_CLIENT_ID)
+  console.log(process.env.GOOGLE_CLIENT_SECRET)
 
   const googleConfig = {
     clientID: process.env.GOOGLE_CLIENT_ID,

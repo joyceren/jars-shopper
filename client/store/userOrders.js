@@ -18,6 +18,9 @@ export function fetchUserOrders (userId) {
   return function thunk (dispatch) {
       return axios.get(`/api/orders/user/${userId}`)
         .then(res => res.data)
-        .then(orders => dispatch(getUserOrdersActionCreator(orders)))
+        .then(orders => {
+          console.log(orders)
+          dispatch(getUserOrdersActionCreator(orders))
+        })
   }
 }

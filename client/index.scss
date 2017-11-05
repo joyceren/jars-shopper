@@ -4,6 +4,10 @@
   margin:0px;
 }
 
+h2 {
+  padding: 10px;
+}
+
 .main-container{
   padding-left: 10%;
   padding-right: 10%;
@@ -144,4 +148,8 @@ img {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+.userOrders-container {
+  padding: 50px;
 }

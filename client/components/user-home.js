@@ -9,28 +9,25 @@ import { fetchUserOrders } from '../store'
  */
 export class UserHome extends React.Component {
 
-  componentDidMount() {
-    this.props.getUserOrders(this.props.user.id)
+  componentDidMount(){
+    this.props.getUserOrders(Number(this.props.user.id))
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   this.props=nextProps;
-  //   this.props.getUserOrders(this.props.user.id)
-  // }
-
   render() {
-    console.log(this.props)
-    const {user} = this.props
+    const {user, userOrders} = this.props
     return (
       <div>
-        <h3>Welcome, {user.email}</h3>
-        <div>
-          {this.props.userOrders.map(order => {
-            <div>
-              <h3>{order.date}</h3>
-              <p>{order.status}</p>
-            </div>
-          })}
+        <h2>Welcome, {user.email}</h2>
+        <div className="userOrders-container">
+          <h3>Orders:</h3>
+          {userOrders.map(order => (
+            <Link to={`/orders/${order.id}`} key={order.id}>
+              <div className="product-list-item">
+                <h3>{order.date}</h3>
+                <p>{order.status}</p>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     )

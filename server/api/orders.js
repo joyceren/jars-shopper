@@ -3,8 +3,6 @@ const { Order, Product } = require('../db/models');
 
 module.exports = router
 
-//find all orders
-
 router.get('/', (req, res, next) => {
   Order.findAll({
     include: [ Product ]
@@ -12,19 +10,6 @@ router.get('/', (req, res, next) => {
   .then(orders => res.json(orders))
   .catch(next)
 })
-
-//find open order by userId
-
-router.get('/open/user/:userId', (req, res, next) => {
-  Order.findOne({
-    where: { userId: req.params.userId, status: "Open" },
-    include: [ Product ]
-  })
-  .then(orders => res.json(orders))
-  .catch(next)
-})
-
-//find all orders by userId
 
 router.get('/user/:userId', (req, res, next) => {
   Order.findAll({
@@ -35,10 +20,10 @@ router.get('/user/:userId', (req, res, next) => {
   .catch(next)
 })
 
-router.get('/:id', (req, res, next) => {
+router.get('/id/:id', (req, res, next) => {
   Order.findOne( {
     where: {
-      id: req.params.id
+      id: Number(req.params.id)
     },
     include: [ Product ]
   })
@@ -52,7 +37,7 @@ router.post('/', (req, res, next) => {
   .catch(next)
 })
 
-router.delete('/:id', (req, res, next) => {
+router.delete('/id/:id', (req, res, next) => {
   Order.destroy({
     where: {
       id: req.params.id
@@ -62,7 +47,7 @@ router.delete('/:id', (req, res, next) => {
   .catch(next)
 })
 
-router.put('/:id', (req, res, next) => {
+router.put('/id/:id', (req, res, next) => {
   Order.findById(req.params.id)
     .then(order => order.update(req.body.order))
     .then(order => order.setProduct(req.body.product, {
@@ -72,4 +57,13 @@ router.put('/:id', (req, res, next) => {
       }
     }))
     .catch(next)
+})
+
+router.get('/cart/:userId', (req, res, next) => {
+  Order.findOne({
+    where: { userId: req.params.userId, status: "Open" },
+    include: [ Product ]
+  })
+  .then(orders => res.json(orders))
+  .catch(next)
 })

@@ -48,7 +48,9 @@ const productCategories = [
 const orders = [
   { date: '2016-08-09 07:42:28', status: 'Open', userId: 1},
   { date: '2016-08-09 07:42:28', status: 'Completed', userId: 2 },
-  { date: '2016-08-09 07:42:28', status: 'Processing', userId: 3 }
+  { date: '2016-08-09 07:42:28', status: 'Processing', userId: 3 },
+  { date: '2016-08-09 07:42:28', status: 'Processing', userId: 1 },
+  { date: '2016-08-09 07:42:28', status: 'Completed', userId: 1 },
 ]
 
 const orderProducts = [

@@ -35,7 +35,6 @@ const Navbar = (props) => {
             <input type="text" name="searchKey" />
             <input type="Submit" value="Search" onChange={(evt) => {
               evt.preventDefault();
-              console.log(evt.searchKey.value);
             }}/>
           </form>
         </div>
@@ -55,7 +54,7 @@ const Navbar = (props) => {
             }
 
           <div className='navbar-buttons'>
-            <Link to="/cart"><button><img src="https://d30y9cdsu7xlg0.cloudfront.net/png/28468-200.png" alt="my image" className='cart-img' onClick={ () => console.log('CLICKED')} /></button> </Link>
+            <Link to="/cart"><button><img src="https://d30y9cdsu7xlg0.cloudfront.net/png/28468-200.png" alt="my image" className='cart-img' onClick={ () => {}} /></button> </Link>
         </div>
       </div>
     </nav>
