@@ -21,11 +21,11 @@ class Category extends React.Component {
     console.log(filteredProducts)
     return (
       <div>
-        <h1>{this.props.match.params.name}</h1>
+        <h2>{this.props.match.params.name}</h2>
         <div className='all-products'>
           {filteredProducts && filteredProducts.map( product => {
               return (
-                <div key={product.id} className="ProductListItem" >
+                <div key={product.id} className="product-list-item" >
                   <Link to={`/products/${product.id}`}>
                       <img src = {product.image} />
                       <h3>{product.title}</h3>

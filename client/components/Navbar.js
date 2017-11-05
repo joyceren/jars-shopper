@@ -14,12 +14,15 @@ const Navbar = (props) => {
         <button className="dropbtn">Categories</button>
         <div className="dropdown-content">
           <h2>Types of Dragons</h2>
-          {props.categories.map((cat)=> (
-              <div key= {cat.id}>
-                <Link to={`/categories/${cat.name}`}>{cat.name}</Link>
-              </div>
-            )
-          )}
+            <div>
+              <Link to={`/products`}>All</Link>
+            </div>
+            {props.categories.map((cat)=> (
+                <div key= {cat.id}>
+                  <Link to={`/products/categories/${cat.name}`}>{cat.name}</Link>
+                </div>
+              )
+            )}
         </div>
       </div>
 

@@ -15,12 +15,14 @@ const reviews = [
 ];
 
 const products = [
-  { title: 'Dragon1', description: 'dragon 1', price: '82', quantity: 7},
-  { title: 'Dragon2', description: 'dragon 2', price: '97', quantity: 4},
-{ title: 'Dragon3', description: 'dragon 3', price: 67, quantity: 2 },
- { title: 'Dragon4', description: 'dragon 4', price: 88,
-  quantity: 9, image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Komodo_dragon01.JPG/220px-Komodo_dragon01.JPG' }
-
+  { title: 'Dragon1', description: 'dragon 1', price: '82', quantity: 7, image:"https://thumbs.dreamstime.com/z/vector-cute-smiling-happy-dragon-as-cartoon-toy-22305702.jpg"},
+  { title: 'Dragon2', description: 'dragon 2', price: '97', quantity: 4, image: "https://previews.123rf.com/images/nataka/nataka1304/nataka130400010/19088142-cute-dragon-vector-Stock-Vector-baby.jpg"},
+  { title: 'Dragon3', description: 'dragon 3', price: 67, quantity: 2 },
+  { title: 'Dragon4', description: 'dragon 4', price: 88,
+  quantity: 9, image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Komodo_dragon01.JPG/220px-Komodo_dragon01.JPG' },
+  { title: 'Hungarian Horntail', description: 'The famously deadly dragon, as seen on Harry Potter!', price: 67, quantity: 2, image: "http://media.immediate.co.uk/volatile/sites/3/2016/10/119142.jpg?quality=90&resize=620,413"},
+  {title: "Ord", description: "There's Ord, he's the biggest, not so brave of heart.", price: 0, quantity: 1, image: "http://imgs.tuts.dragoart.com/how-to-draw-ord-from-dragon-tales_1_000000002730_5.jpg"},
+  {title: "Zack and Weezy", description: "'Cuz you know two heads are better than one.'", price: 0, quantity: 2, image: "http://vignette1.wikia.nocookie.net/dragontalespedia/images/e/e0/Dragontales_zakwheezie.jpg/revision/latest?cb=20110312205711"},
 ]
 
 const categories = [
@@ -28,12 +30,14 @@ const categories = [
 ]
 
 const productCategories = [
-  { productId: 1, categoryId: 1 },
-  { productId: 2, categoryId: 3 },
   { productId: 1, categoryId: 2 },
+  { productId: 2, categoryId: 3 },
   { productId: 3, categoryId: 4 },
-  { productId: 4, categoryId: 4 }
-
+  { productId: 4, categoryId: 3 },
+  { productId: 5, categoryId: 4 },
+  { productId: 6, categoryId: 1 },
+  { productId: 7, categoryId: 3 },
+  { productId: 7, categoryId: 4 },
 ]
 
 const orders = [
