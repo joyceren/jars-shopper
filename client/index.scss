@@ -124,3 +124,19 @@ img {
     background-color: grey;
     color: white;
 }
+
+.single-cart-item {
+  display:flex;
+  justify-content: space-between;
+  width: inherit;
+}
+
+.cart-items {
+  width: 75vw;
+}
+
+.navbar-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}

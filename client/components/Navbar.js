@@ -26,23 +26,37 @@ const Navbar = (props) => {
         </div>
       </div>
 
-      <Link to="/"><h1>Dragon Adoption Agency</h1></Link>
+      <Link to="/"><h1>DRAGON ADOPTION AGENCY</h1></Link>
 
-          {
-            isLoggedIn
-              ? <div>
-                {/* The navbar will show these links after you log in */}
-                <Link to="/home">Home</Link>
-                <a href="#" onClick={handleClick}>Logout</a>
-              </div>
-              : <div>
-                {/* The navbar will show these links before you log in */}
-                <Link to="/login">Login</Link>
-                <Link to="/signup">Sign Up</Link>
-              </div>
-          }
-        <div className='navbar-buttons'>
-          <Link to="/cart"><button><img src="https://d30y9cdsu7xlg0.cloudfront.net/png/28468-200.png" alt="my image" className='cart-img' onClick={ () => console.log('CLICKED')} /></button> </Link>
+      <div className="navbar-right">
+
+        <div className="search-bar">
+          <form>
+            <input type="text" name="searchKey" />
+            <input type="Submit" value="Search" onChange={(evt) => {
+              evt.preventDefault();
+              console.log(evt.searchKey.value);
+            }}/>
+          </form>
+        </div>
+
+            {
+              isLoggedIn
+                ? <div>
+                  {/* The navbar will show these links after you log in */}
+                  <Link to="/home">Home</Link>
+                  <a href="#" onClick={handleClick}>Logout</a>
+                </div>
+                : <div>
+                  {/* The navbar will show these links before you log in */}
+                  <Link to="/login">Login</Link>
+                  <Link to="/signup">Sign Up</Link>
+                </div>
+            }
+
+          <div className='navbar-buttons'>
+            <Link to="/cart"><button><img src="https://d30y9cdsu7xlg0.cloudfront.net/png/28468-200.png" alt="my image" className='cart-img' onClick={ () => console.log('CLICKED')} /></button> </Link>
+        </div>
       </div>
     </nav>
   )
