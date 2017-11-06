@@ -21,8 +21,6 @@ class SingleProduct extends React.Component {
 
     const product = this.props.product;
     const qtyArr = new Array(10).fill(0)
-    console.log(product.reviews)
-
 
     return(
         <div>
@@ -75,7 +73,6 @@ class SingleProduct extends React.Component {
 const mapStateToProps = function (state) {
   return {
      product: state.product
-    //  isLoggedin: state.isLoggedin
   }
 }
 
