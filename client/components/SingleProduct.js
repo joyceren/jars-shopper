@@ -45,15 +45,15 @@ class SingleProduct extends React.Component {
 
               <h3>Inventory: {product.quantity}</h3>
               <p>{product.description}</p>
-
+              <h2>Reviews</h2>
               <div className='reviews-container'>
-                <h2>Reviews</h2>
+
                 {
                   product.reviews && product.reviews.map(review => {
 
                     return(
                     <div key={review.id} className="single-review">
-                      <h3>{review.title}</h3>
+                      <h3 className="underlined">{review.title}</h3>
                       <div>{'+'.repeat(review.stars)}</div>
                       <h4>{review.user.googleId}</h4>
                       <p>{review.text}</p>

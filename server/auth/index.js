@@ -1,5 +1,6 @@
 const router = require('express').Router()
-const User = require('../db/models/user')
+const {User, Order} = require('../db/models')
+const cartMaker = require("../api/cartMaker")
 module.exports = router
 
 router.post('/login', (req, res, next) => {
@@ -31,8 +32,16 @@ router.post('/signup', (req, res, next) => {
 })
 
 router.post('/logout', (req, res) => {
-  req.logout()
-  res.redirect('/')
+  req.logout();
+  req.session.cartId = null;
+  // Order.create()
+  // .then(order => {
+  //   console.log(req.userId)
+  //   req.session.cartId = order.id
+  //   console.log(req.session)
+  // })
+  // .catch(next)
+  res.redirect('/');
 })
 
 router.get('/me', (req, res) => {

@@ -16,7 +16,7 @@ router.put('/', (req, res, next) => {
 router.get('/', (req, res, next) => {
   Order.findOne( {
     where: {
-      id: req.session.id
+      id: req.session.cartId
     },
     include: [ Product ]
   })
@@ -33,4 +33,6 @@ router.delete('/', (req, res, next) => {
   .then(() => res.status(204).send())
   .catch(next)
 })
+
+module.exports = router;
 
