@@ -8,7 +8,7 @@ function cartMaker(req, res, next) {
     Order.create()
     .then(cart => {
       req.session.cartId = cart.id
-      res.status(200).send();
+      next();
     })
     .catch(next)
   }
