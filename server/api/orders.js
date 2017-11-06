@@ -58,12 +58,3 @@ router.put('/id/:id', (req, res, next) => {
     }))
     .catch(next)
 })
-
-router.get('/cart/:userId', (req, res, next) => {
-  Order.findOne({
-    where: { userId: req.params.userId, status: "Open" },
-    include: [ Product ]
-  })
-  .then(orders => res.json(orders))
-  .catch(next)
-})
