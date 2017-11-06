@@ -16,11 +16,11 @@ export default function reducer (state={}, action) {
 
 export function fetchOrder(id) {
   return function thunk(dispatch) {
-      return axios.get(`/api/orders/${id}`)
-          .then(res => res.data)
-          .then(order => {
-              const action = getOneOrder(order);
-              dispatch(action)
-          })
+      return axios.get(`/api/orders/id/${id}`)
+        .then(res => res.data)
+        .then(order => {
+            const action = getOneOrder(order);
+            dispatch(action)
+      })
   }
 }

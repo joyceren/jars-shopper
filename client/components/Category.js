@@ -10,27 +10,29 @@ class Category extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.props = nextProps;
+    this.props=nextProps;
+    if(this.props.filteredCategory.name !== this.props.match.params.name){
+      this.props.getCategoryProducts(this.props.match.params.name);
+    }
   }
 
   render() {
-    const filteredProducts = this.props.filteredProducts
-
+    const filteredProducts = this.props.filteredCategory.products
     return (
       <div>
-        <h1>{this.props.match.params.name}</h1>
+        <h2>{this.props.match.params.name.toUpperCase()}</h2>
         <div className='all-products'>
-        {filteredProducts && filteredProducts.map( product => {
-            return (
-              <div key={product.id} className="ProductListItem" >
-                <Link to={`/products/${product.id}`}>
-                    <img src = {product.image} />
-                    <h3>{product.title}</h3>
-                    <h4>${product.price}</h4>
-                </Link>
-              </div>
-            )
-        })}
+          {filteredProducts && filteredProducts.map( product => {
+              return (
+                <div key={product.id} className="product-list-item" >
+                  <Link to={`/products/${product.id}`}>
+                      <img src = {product.image} />
+                      <h3>{product.title}</h3>
+                      <h4>${product.price}</h4>
+                  </Link>
+                </div>
+              )
+          })}
         </div>
       </div>
     )
@@ -39,7 +41,7 @@ class Category extends React.Component {
 
 const mapStateToProps = function (state) {
   return {
-      filteredProducts: state.categoryProducts,
+      filteredCategory: state.categoryProducts,
   }
 }
 
@@ -51,6 +53,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Category)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Category))
