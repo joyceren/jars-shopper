@@ -1,3 +1,5 @@
+
+
 const ADD_FIRST_NAME = 'ADD_FIRST_NAME';
 const ADD_LAST_NAME = 'ADD_LAST_NAME';
 
@@ -74,35 +76,38 @@ export const getExpYear = year => {
 export default function checkoutReducer(state={},action) {
   switch(action.type){
     case  ADD_FIRST_NAME:
-      return action.firstName
+      return action.firstName;
     case  ADD_LAST_NAME:
-      return action.lastName
+      return action.lastName;
     case ADD_BILLING_ADD: 
-      return action.billingAddress
+      return action.billingAddress;
     case ADD_SHIPPING_ADD:
-      return action.shippingAddress
+      return action.shippingAddress;
     case ADD_BILLING_CITY: 
-      return action.billingCity
+      return action.billingCity;
     case ADD_SHIPPING_CITY:
-      return action.shippingCity
+      return action.shippingCity;
     case ADD_BILLING_ZIP:
-      return action.billingZip
+      return action.billingZip;
     case ADD_SHIPPING_ZIP: 
-      return action.shippingZip
+      return action.shippingZip;
     case ADD_BILLING_STATE:
-      return action.billingstate
+      return action.billingstate;
     case ADD_SHIPPING_STATE:
-      return action.shippingstate
+      return action.shippingstate;
     case ADD_CC_NUM:
-      return action.ccNum
+      return action.ccNum;
     case ADD_EXP_MONTH:
-      return action.month
+      return action.month;
     case ADD_EXP_YEAR:
-      return action.year
+      return action.year;
+    default:
+      return state;
 
   }
 
 }
+
 // export const submit = () => {
 //   return { type: SUBMIT };
 // }
