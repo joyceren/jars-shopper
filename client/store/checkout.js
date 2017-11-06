@@ -60,6 +60,22 @@ export const getExpYear = year => {
   return {type: ADD_EXP_YEAR, year}
 }
 
+export default function checkoutReducer(state={},action) {
+  switch(action.type){
+    case  ADD_FIRST_NAME
+    case  ADD_LAST_NAME
+    case ADD_BILLING_ADD
+    case ADD_SHIPPING_ADD
+    case ADD_BILLING_CITY
+    case ADD_BILLING_ZIP
+    case ADD_SHIPPING_ZIP
+    case ADD_CC_NUM
+    case ADD_EXP_MONTH
+    case ADD_EXP_YEAR
+
+  }
+
+}
 // export const submit = () => {
 //   return { type: SUBMIT };
 // }
