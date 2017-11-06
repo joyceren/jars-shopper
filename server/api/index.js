@@ -3,18 +3,32 @@ const { Order } = require('../db/models');
 module.exports = router;
 
 function cartMaker(req, res, next) {
+  console.log('in cartMaker')
+  if (req.user.id) {
+    console.log('USER ID ', req.user.id)
+    Order.findOne({
+      where: { userId: req.user.id, status: 'Open' },
+    })
+    .then(order => {
+      req.session.cartId = order.id
+      next();
+    })
+    .catch(next);
+  }
   const cartId = req.session.cartId;
   if (!cartId) {
     Order.create()
     .then(cart => {
-      req.session.cartId = cart.id
+      console.log('made cart')
+      req.session.cartId = cart.id;
       next();
     })
-    .catch(next)
+    .catch(next);
   }
+  next();
 }
 
-router.use(cartMaker)
+router.use(cartMaker);
 router.use('/cart', require('./cart'));
 router.use('/users', require('./users'));
 router.use('/products', require('./products'));
