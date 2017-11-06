@@ -3,15 +3,26 @@ import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { checkout } from '../store'
 
-class Checkout extends Component {
+const Checkout = (props) => {
 
-  constructor(props) {
-    super(props);
+  const { checkout } = props;
+    const {
+      handleFirstName,
+      handleLastName,
+      handleShippingAddress,
+      handleBillingAddress,
+      handleShippingCity,
+      handleBillingCity,
+      handleShippingState,
+      handleBillingState,
+      handleShippingZip,
+      handleBillingZip,
+      handleCCNum,
+      handleExpMonth,
+      handleExpYear
+  } = props;
 
 
-  }
-
-  render() {
     return(
       <div>
         <h1>Checkout</h1>
@@ -116,7 +127,6 @@ class Checkout extends Component {
     )
   }
 
-}
 
 const mapStateToProps = function ({checkout}) {
   return {
@@ -167,4 +177,5 @@ const mapDispatchToProps = function (dispatch, ownProps) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Checkout);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Checkout));
+
