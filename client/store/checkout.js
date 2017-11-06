@@ -1,3 +1,5 @@
+
+
 const ADD_FIRST_NAME = 'ADD_FIRST_NAME';
 const ADD_LAST_NAME = 'ADD_LAST_NAME';
 
@@ -9,6 +11,9 @@ const ADD_SHIPPING_CITY = 'ADD_SHIPPING_CITY';
 
 const ADD_BILLING_ZIP = 'ADD_BILLING_ZIP';
 const ADD_SHIPPING_ZIP = 'ADD_SHIPPING_ZIP';
+
+const ADD_BILLING_STATE = 'ADD_BILLING_STATE'
+const ADD_SHIPPING_STATE= 'ADD_SHIPPING_STATE'
 
 const ADD_CC_NUM = 'ADD_CC_NUM';
 const ADD_EXP_MONTH = 'ADD_EXP_MONTH';
@@ -48,6 +53,14 @@ export const getShippingZip = shippingZip => {
   return {type: ADD_SHIPPING_ZIP, shippingZip}
 }
 
+export const getShippingState = shippingstate => {
+  return {type: ADD_SHIPPING_STATE, shippingstate}
+}
+
+export const getBillingState = billingstate => {
+  return {type: ADD_BILLING_STATE, billingstate}
+}
+
 export const getCCNum = ccNum => {
   return {type: ADD_CC_NUM, ccNum}
 }
@@ -58,6 +71,41 @@ export const getExpMonth = month => {
 
 export const getExpYear = year => {
   return {type: ADD_EXP_YEAR, year}
+}
+
+export default function checkoutReducer(state={},action) {
+  switch(action.type){
+    case  ADD_FIRST_NAME:
+      return action.firstName;
+    case  ADD_LAST_NAME:
+      return action.lastName;
+    case ADD_BILLING_ADD: 
+      return action.billingAddress;
+    case ADD_SHIPPING_ADD:
+      return action.shippingAddress;
+    case ADD_BILLING_CITY: 
+      return action.billingCity;
+    case ADD_SHIPPING_CITY:
+      return action.shippingCity;
+    case ADD_BILLING_ZIP:
+      return action.billingZip;
+    case ADD_SHIPPING_ZIP: 
+      return action.shippingZip;
+    case ADD_BILLING_STATE:
+      return action.billingstate;
+    case ADD_SHIPPING_STATE:
+      return action.shippingstate;
+    case ADD_CC_NUM:
+      return action.ccNum;
+    case ADD_EXP_MONTH:
+      return action.month;
+    case ADD_EXP_YEAR:
+      return action.year;
+    default:
+      return state;
+
+  }
+
 }
 
 // export const submit = () => {

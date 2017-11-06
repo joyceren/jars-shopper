@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { checkout } from '../store'
 
 class Checkout extends Component {
 
@@ -116,3 +117,54 @@ class Checkout extends Component {
   }
 
 }
+
+const mapStateToProps = function ({checkout}) {
+  return {
+    checkout
+  }
+}
+const mapDispatchToProps = function (dispatch, ownProps) {
+  return {
+      handleFirstName: evt => {
+          dispatch(getFirstName(evt.target.value));
+      },
+      handleLastName: evt => {
+          dispatch(getLastName(evt.target.value));
+      },
+      handleBillingAddress: evt => {
+          dispatch(getBillingAdd(evt.target.value));
+      },
+      handleBillingCity: evt => {
+          dispatch(getBillingCity(evt.target.value));
+      },
+      handleBillingState: evt => {
+          dispatch(getBillingState(evt.target.value));
+      },
+      handleBillingZip: evt => {
+          dispatch(getBillingZip(evt.target.value));
+      },
+      handleCCNum: evt => {
+          dispatch(getCCNum(evt.target.value));
+      },
+      handleExpMonth: evt => {
+          dispatch(getExpMonth(evt.target.value))
+      },
+      handleExpYear: evt => {
+          dispatch(getExpYear(evt.target.value))
+      },
+      handleShippingAddress: evt => {
+          dispatch(getShippingAdd(evt.target.value));
+      },
+      handleShippingCity: evt => {
+          dispatch(getShippingCity(evt.target.value));
+      },
+      handleShippingState: evt => {
+          dispatch(getShippingState(evt.target.value));
+      },
+      handleShippingZip: evt => {
+          dispatch(getShippingZip(evt.target.value));
+      },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout);
