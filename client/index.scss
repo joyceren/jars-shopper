@@ -1,6 +1,16 @@
 * {
   box-sizing: border-box;
   text-decoration: none;
+  margin:0px;
+}
+
+h2 {
+  padding: 10px;
+}
+
+.main-container{
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 body {
@@ -8,7 +18,7 @@ body {
 
   a {
     text-decoration: none;
-    color:auto;
+    color: inherit;
   }
 
   label {
@@ -33,6 +43,8 @@ img {
 .navbar {
   display: flex;
   justify-content: space-between;
+  background-color: lightgrey;
+  align-items: center;
 }
 
 .cart-img {
@@ -43,11 +55,18 @@ img {
 .all-products {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.product-list-item{
+  margin:10px;
+  padding:10px;
+  outline: 1px solid lightgrey;
 }
 
 .home-img {
   height: auto;
-  width: 50%;
+  width: 100%;
 }
 
 .main-container{
@@ -56,12 +75,81 @@ img {
   align-content: flex-start;
 }
 
-.sidebar-container{
-  padding: 50px;
-  background-color: lightgrey;
-  color:white;
-}
-
 .children-container{
   padding:50px;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    height:100vh;
+    min-width: 15vw;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: dodgerblue;
+  color: white;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: grey;
+    color: white;
+}
+
+.single-cart-item {
+  display:flex;
+  justify-content: space-between;
+  width: inherit;
+}
+
+.cart-header {
+  display:flex;
+  justify-content: space-between;
+}
+
+.cart-items {
+  width: 75vw;
+}
+
+.navbar-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.userOrders-container {
+  padding: 50px;
 }

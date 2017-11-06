@@ -17,7 +17,7 @@ const AllProducts = (props) => {
             <div className='all-products'>
               {props.products.map( product => {
                   return (
-                    <div key={product.id} className="ProductListItem" >
+                    <div key={product.id} className="product-list-item" >
                       <Link to={`/products/${product.id}`}>
                           <img src = {product.image} />
                           <h3>{product.title}</h3>
@@ -30,6 +30,8 @@ const AllProducts = (props) => {
         </div>
     )
 }
+
+
 
 
 
