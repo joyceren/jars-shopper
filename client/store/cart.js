@@ -14,17 +14,14 @@ export default function reducer (state={}, action) {
     }
 }
 
-export function fetchCart(userId) {
+export function fetchCart() {
   return function thunk(dispatch) {
-    if(!userId) dispatch({type: SET_CART, order: {}})
-    else{
-      return axios.get(`/api/orders/cart/${userId}`)
+      return axios.get('/api/cart/')
         .then(res => res.data)
         .then(order => {
             const action = setCart(order);
             dispatch(action)
         })
-    }
 
   }
 }

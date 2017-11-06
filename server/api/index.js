@@ -1,27 +1,10 @@
 const router = require('express').Router();
-const { Order } = require('../db/models');
 module.exports = router;
 
-// function cartMaker(req, res, next) {
-//   if (req.cart) return next();
-//   const cartId = req.session.cartId;
-//   if (cartId) {
-//     return Order.findById(cartId)
-//       .then(cart => {
-//         req.cart = cart
-//         next()
-//       })
-//   }
-//   else {
-//     Order.create()
-//     .then(cart => {
-//       req.session.cartId = cart.id
-//     })
-//   }
-// }
-// router.use(cartMaker)
+router.use(require('./cartMaker'))
 
-router.use('/users', require('./users'))
+router.use('/cart', require('./cart'));
+router.use('/users', require('./users'));
 router.use('/products', require('./products'));
 router.use('/orders', require('./orders'));
 router.use('/categories', require('./categories'));

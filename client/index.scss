@@ -153,3 +153,18 @@ img {
 .userOrders-container {
   padding: 50px;
 }
+
+.reviews-container {
+  justify-content: center;
+}
+
+.single-review {
+  padding: 20px;
+  margin: 10px;
+  background-color: lightgrey;
+  outline: 1px solid slategrey;
+}
+
+.underlined {
+  text-decoration: underline;
+}

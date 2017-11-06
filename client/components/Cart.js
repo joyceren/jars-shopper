@@ -7,16 +7,15 @@ import {fetchCart} from '../store';
 class Cart extends React.Component {
 
   componentDidMount(){
-    this.props.loadCart(this.props.userId)
+    this.props.loadCart()
   }
 
   componentWillReceiveProps(nextProps){
-    if(this.props.userId!==nextProps.userId) this.props.loadCart(this.props.userId)
+    if(this.props.userId!==nextProps.userId) this.props.loadCart()
   }
 
   render(){
     const cart = this.props.cart.products
-
     return (
       <div>
         <div className="cart-header">
@@ -26,13 +25,15 @@ class Cart extends React.Component {
         <div className="cart-items">
           { cart && cart.length ?
             cart.map(item => (
-              <div key={item.id} className="product-list-item single-cart-item">
-                <img src={item.image}/>
-                <h3>{item.title}</h3>
-                <p>${item.price}</p>
-                <h2>Qty: {item.order_products.quantity}</h2>
-                <button>X</button>
-              </div>
+              <Link to={`products/${item.id}`} key={item.id}>
+                <div className="product-list-item single-cart-item">
+                  <img src={item.image}/>
+                  <h3>{item.title}</h3>
+                  <p>${item.price}</p>
+                  <h2>Qty: {item.order_products.quantity}</h2>
+                  <button>X</button>
+                </div>
+              </Link>
             ))
             :
             <div className="product-list-item single-cart-item">
@@ -54,8 +55,8 @@ function mapState(state) {
 
 function mapDispatch(dispatch) {
   return {
-    loadCart(userId) {
-      dispatch(fetchCart(userId))
+    loadCart() {
+      dispatch(fetchCart())
     }
   }
 }
