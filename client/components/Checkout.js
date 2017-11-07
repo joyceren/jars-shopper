@@ -1,11 +1,26 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { checkout } from '../store'
+import {
+  checkout,
+  getFullName,
+  getBillingAdd,
+  getBillingCity,
+  getBillingState,
+  getBillingZip,
+  getShippingAdd,
+  getShippingCity,
+  getShippingState,
+  getShippingZip,
+  getCCNum,
+  getExpMonth,
+  getExpYear
+
+ } from '../store'
 
 const Checkout = (props) => {
 
-  const { checkout } = props;
+  const { checkout, cart } = props;
     const {
       handleFullName,
       handleShippingAddress,
@@ -18,18 +33,18 @@ const Checkout = (props) => {
       handleBillingZip,
       handleCCNum,
       handleExpMonth,
-      handleExpYear
+      handleExpYear,
+      handleSubmit
   } = props;
 
-
-    return(
+    return (
       <div>
         <h1>Checkout</h1>
         <h4>Billing Information</h4>
-        <form>
+        <form onSubmit = {(evt) => handleSubmit(checkout, cart, evt)}>
           <label> Name
             <input type='text' value={checkout.name} onChange= {handleFullName}/>
-    
+
             </label>
 
             <label> Address
@@ -117,7 +132,7 @@ const Checkout = (props) => {
 
 
           <div>
-            <button type="submit"> Submit</button>
+            <Link to='/review'><button type="submit"> Submit</button></Link>
             </div>
         </div>
 
@@ -126,15 +141,16 @@ const Checkout = (props) => {
   }
 
 
-const mapStateToProps = function ({checkout}) {
+const mapStateToProps = function (state) {
   return {
-    checkout
+    checkout: state.checkout,
+    cart: state.cart
   }
 }
 const mapDispatchToProps = function (dispatch, ownProps) {
   return {
       handleFullName: evt => {
-          dispatch(getFirstName(evt.target.value));
+          dispatch(getFullName(evt.target.value));
       },
       handleBillingAddress: evt => {
           dispatch(getBillingAdd(evt.target.value));
@@ -169,6 +185,10 @@ const mapDispatchToProps = function (dispatch, ownProps) {
       handleShippingZip: evt => {
           dispatch(getShippingZip(evt.target.value));
       },
+      handleSubmit: (customerInfo, productInfo, evt) => {
+        evt.preventDefault();
+        dispatch(onSubmissionThunk(customerInfo, productInfo))
+      }
   }
 }
 
