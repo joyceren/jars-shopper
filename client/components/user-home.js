@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {Link, withRouter} from 'react-router-dom';
 import { fetchUserOrders, fetchProducts, fetchAllUsers, fetchAllOrders } from '../store'
 import axios from 'axios';
+import history from '../history'
 
 /**
  * COMPONENT
@@ -72,7 +73,12 @@ export class UserHome extends React.Component {
                       <h3>{order.date}</h3>
                       <p>{order.status}</p>
                     </Link>
-                    <button onClick={(evt)=>{this.props.deleteOrder(order.id)}}>Delete Order</button>
+                    <button onClick={evt =>{
+                      console.log(evt)
+                      this.props.deleteOrder(order.id)
+                    }}>
+                      Delete Order
+                    </button>
                   </div>
                 ))}
               </div>
@@ -82,6 +88,7 @@ export class UserHome extends React.Component {
                 {allUsers.map(user => (
                   <div key={user.id}>
                   {user.name + " - " + user.email}
+                  <button onClick = {evt => {this.props.deleteUser(user.id)}}>Delete User</button>
                   </div>
                 ))}
               </div>
@@ -109,7 +116,7 @@ const mapState = (state) => {
   }
 }
 
-const mapDispatch = (dispatch) => {
+const mapDispatch = (dispatch, ownProps) => {
   return {
     getUserOrders(userId) {
       dispatch(fetchUserOrders(userId))
@@ -120,12 +127,15 @@ const mapDispatch = (dispatch) => {
     },
     deleteUser(userId){
       axios.delete(`/api/users/${userId}`)
+      .then(() => history.push('/home'))
     },
     deleteProduct(productId){
       axios.delete(`/api/products/${productId}`)
+      .then(() => history.push('/home'))
     },
     deleteOrder(orderId){
-      axios.delete(`/api/orders/${orderId}`)
+      axios.delete(`/api/orders/id/${orderId}`)
+      .then(() => history.push('/home'))
     }
   }
 }

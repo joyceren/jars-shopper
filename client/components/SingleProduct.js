@@ -48,6 +48,29 @@ class SingleProduct extends React.Component {
               <h2>Reviews</h2>
               <div className='reviews-container'>
 
+              { this.props.isLoggedIn ?
+
+                <div>
+                  <form>
+                    <label>Stars:</label>
+                    <input type="radio" name="stars" value="0" />
+                    <input type="radio" name="stars" value="1" />
+                    <input type="radio" name="stars" value="2" />
+                    <input type="radio" name="stars" value="3" />
+                    <input type="radio" name="stars" value="4" />
+                    <input type="radio" name="stars" value="5" />
+                    <br></br>
+                    <input type="text" name="text" value="review"/>
+                    <input type="submit" />
+                  </form>
+                </div>
+                :
+                <div>
+                Log in to Leave a Review!
+                </div>
+
+              }
+
                 {
                   product.reviews && product.reviews.map(review => {
 
@@ -72,7 +95,8 @@ class SingleProduct extends React.Component {
 
 const mapStateToProps = function (state) {
   return {
-     product: state.product
+     product: state.product,
+     isLoggedIn: !!state.user.id,
   }
 }
 
