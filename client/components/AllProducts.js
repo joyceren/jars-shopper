@@ -32,7 +32,4 @@ const AllProducts = (props) => {
 }
 
 
-
-
-
 export default connect(mapStateToProps)(AllProducts);
