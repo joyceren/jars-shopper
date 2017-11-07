@@ -3,11 +3,11 @@ const { Order } = require('../db/models');
 module.exports = function cartMaker(req, res, next) {
   if(req.user){
     console.log('User ID=',req.user.id)
-    Order.findOne({
+    Order.findOrCreate({
       where: {userId: Number(req.user.id), status: "Open"}
     })
     .then(order => {
-      req.session.cartId = order.id
+      req.session.cartId = order[0].id
       next()
     })
     .catch(next)
