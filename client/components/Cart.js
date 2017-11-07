@@ -34,11 +34,9 @@ class Cart extends React.Component {
                   <h3>{item.title}</h3>
                   <p>${item.price}</p>
                   <h2>Qty: {item.order_products.quantity}</h2>
-
                 </div>
               </Link>
               <button onClick={() => {
-                console.log('IN CLICK HANDLER', item.id)
                 this.props.deleteFromCartHandler(item.id);
               }} >X</button>
               </div>
