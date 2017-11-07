@@ -3,13 +3,22 @@ const { Order, Product } = require('../db/models');
 
 router.put('/', (req, res, next) => {
   Order.findById(req.session.cartId)
-  .then(order => order.update(req.body.order))
-  .then(order => order.setProduct(req.body.product, {
+  .then(order => {
+    console.log(req.body.order)
+    order.update(req.body.order)
+    return order;
+  })
+  .then(order => {
+    console.log(req.body.productId, req.body.quantity, req.body.currentPrice)
+    order.addProduct(req.body.productId, {
     through: {
       quantity: req.body.quantity,
       currentPrice: req.body.currentPrice
     }
-  }))
+  })
+  return order;
+})
+  .then(order => res.json(order))
   .catch(next)
 });
 

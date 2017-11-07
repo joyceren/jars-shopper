@@ -2,12 +2,12 @@ import axios from 'axios';
 
 const SET_CART = 'GET_CART'
 
-const setCart = order => ({type: SET_CART, order})
+const setCart = cart => ({type: SET_CART, cart})
 
 export default function reducer (state={}, action) {
     switch (action.type) {
       case SET_CART:
-      return action.order;
+      return action.cart;
 
       default:
       return state;
@@ -23,5 +23,17 @@ export function fetchCart() {
             dispatch(action)
         })
 
+  }
+}
+
+export function addToCart(productId, currentPrice, quantity) {
+  return function thunk(dispatch) {
+    return axios.put('/api/cart', {order: {}, productId, currentPrice, quantity})
+      .then(res => res.data)
+      .then(order => {
+        const action = setCart(order);
+        dispatch(action)
+        // history.push('/cart')
+      })
   }
 }
