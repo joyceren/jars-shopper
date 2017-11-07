@@ -9,10 +9,9 @@ const Product = db.define('product', {
   },
   description: {
     type: Sequelize.TEXT,
-    allowNull: false
   },
   price: {
-    type: Sequelize.FLOAT,
+    type: Sequelize.INTEGER,
     allowNull: false
   },
   quantity: {
@@ -22,7 +21,6 @@ const Product = db.define('product', {
   image: {
     type: Sequelize.STRING,
     defaultValue: "https://image.ibb.co/n7K5xb/crying_dragon.jpg",
-    allowNull: false
   }
 })
 

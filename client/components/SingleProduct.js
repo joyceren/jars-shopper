@@ -1,8 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link, withRouter} from 'react-router-dom';
-import { fetchProduct } from '../store'
-
+import { fetchProduct, addToCart } from '../store'
 
 
 //change to class with componentDidMount and componentWillReceiveProps
@@ -20,6 +19,7 @@ class SingleProduct extends React.Component {
   render () {
 
     const product = this.props.product;
+    console.log('Product Id', product.id)
     const qtyArr = new Array(10).fill(0)
 
     return(
@@ -28,11 +28,11 @@ class SingleProduct extends React.Component {
             <img src = {product.image}/>
 
             <div className="AddToCart">
-              <form onSubmit={evt => {
-                evt.preventDefault()
-                console.log(`Added something to the cart! (kind of)`)
-              }}>
-                <select>
+              <form onSubmit={(evt) => {
+                evt.preventDefault();
+                this.props.addToCartHandler(product.id, product.price, evt.target.quantity.value);
+              }}>>
+                <select name="quantity">
                   {qtyArr.map((e, i) => (
                     <option key={i} value={i+1}>{i+1}</option>
                   ))}
@@ -47,6 +47,29 @@ class SingleProduct extends React.Component {
               <p>{product.description}</p>
               <h2>Reviews</h2>
               <div className='reviews-container'>
+
+              { this.props.isLoggedIn ?
+
+                <div>
+                  <form>
+                    <label>Stars:</label>
+                    <input type="radio" name="stars" value="0" />
+                    <input type="radio" name="stars" value="1" />
+                    <input type="radio" name="stars" value="2" />
+                    <input type="radio" name="stars" value="3" />
+                    <input type="radio" name="stars" value="4" />
+                    <input type="radio" name="stars" value="5" />
+                    <br></br>
+                    <input type="text" name="text" value="review"/>
+                    <input type="submit" />
+                  </form>
+                </div>
+                :
+                <div>
+                Log in to Leave a Review!
+                </div>
+
+              }
 
                 {
                   product.reviews && product.reviews.map(review => {
@@ -72,7 +95,8 @@ class SingleProduct extends React.Component {
 
 const mapStateToProps = function (state) {
   return {
-     product: state.product
+     product: state.product,
+     isLoggedIn: !!state.user.id,
   }
 }
 
@@ -80,6 +104,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getProduct(id) {
       dispatch(fetchProduct(id))
+    },
+    addToCartHandler(productId, currentPrice, quantity) {
+      dispatch(addToCart(productId, currentPrice, quantity))
     }
   }
 }
