@@ -3,23 +3,33 @@ import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { checkout } from '../store'
 
-class Checkout extends Component {
+const Checkout = (props) => {
 
-  constructor(props) {
-    super(props);
+  const { checkout } = props;
+    const {
+      handleFullName,
+      handleShippingAddress,
+      handleBillingAddress,
+      handleShippingCity,
+      handleBillingCity,
+      handleShippingState,
+      handleBillingState,
+      handleShippingZip,
+      handleBillingZip,
+      handleCCNum,
+      handleExpMonth,
+      handleExpYear
+  } = props;
 
 
-  }
-
-  render() {
     return(
       <div>
         <h1>Checkout</h1>
         <h4>Billing Information</h4>
         <form>
           <label> Name
-            <input type='text' value={checkout.firstName} onChange= {handleFirstName}/>
-            <input type='text' value={checkout.lastName} onChange= {handleLastName}/>
+            <input type='text' value={checkout.name} onChange= {handleFullName}/>
+    
             </label>
 
             <label> Address
@@ -44,8 +54,7 @@ class Checkout extends Component {
 
         <form>
           <label> Name
-            <input type='text' value={checkout.firstName} onChange= {handleFirstName}/>
-            <input type='text' value={checkout.lastName} onChange= {handleLastName}/>
+            <input type='text' value={checkout.fullName} onChange= {handleFullName}/>
             </label>
 
             <label> Address
@@ -116,7 +125,6 @@ class Checkout extends Component {
     )
   }
 
-}
 
 const mapStateToProps = function ({checkout}) {
   return {
@@ -125,11 +133,8 @@ const mapStateToProps = function ({checkout}) {
 }
 const mapDispatchToProps = function (dispatch, ownProps) {
   return {
-      handleFirstName: evt => {
+      handleFullName: evt => {
           dispatch(getFirstName(evt.target.value));
-      },
-      handleLastName: evt => {
-          dispatch(getLastName(evt.target.value));
       },
       handleBillingAddress: evt => {
           dispatch(getBillingAdd(evt.target.value));
@@ -167,4 +172,5 @@ const mapDispatchToProps = function (dispatch, ownProps) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Checkout);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Checkout));
+

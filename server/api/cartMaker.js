@@ -16,6 +16,7 @@ module.exports = function cartMaker(req, res, next) {
     console.log("No User, No Cart, making cart...")
     Order.create()
     .then(order => {
+      console.log('!!!!!!')
       req.session.cartId = order.id
       console.log("just made this cart=", req.session.cartId)
       next()

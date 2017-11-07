@@ -1,7 +1,6 @@
 
 
-const ADD_FIRST_NAME = 'ADD_FIRST_NAME';
-const ADD_LAST_NAME = 'ADD_LAST_NAME';
+const ADD_FULL_NAME = 'ADD_FULL_NAME';
 
 const ADD_BILLING_ADD = 'ADD_BILLING_ADD';
 const ADD_SHIPPING_ADD = 'ADD_SHIPPING_ADD';
@@ -21,12 +20,8 @@ const ADD_EXP_YEAR = 'ADD_EXP_YEAR';
 
 // const SUBMIT = 'SUBMIT';
 
-export const getFirstName = firstName => {
-  return {type: ADD_FIRST_NAME, firstName}
-}
-
-export const getLastName = lastName => {
-  return {type: ADD_LAST_NAME, lastName}
+export const getFullName = fullName => {
+  return {type: ADD_FULL_NAME, fullName}
 }
 
 export const getBillingAdd = billingAddress => {
@@ -75,10 +70,8 @@ export const getExpYear = year => {
 
 export default function checkoutReducer(state={},action) {
   switch(action.type){
-    case  ADD_FIRST_NAME:
-      return action.firstName;
-    case  ADD_LAST_NAME:
-      return action.lastName;
+    case  ADD_FULL_NAME:
+      return action.full.Name;
     case ADD_BILLING_ADD: 
       return action.billingAddress;
     case ADD_SHIPPING_ADD:
