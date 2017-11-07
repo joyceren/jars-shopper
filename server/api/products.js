@@ -4,6 +4,7 @@ const { Review, Product, Category, User } = require('../db/models');
 const router = new express.Router();
 
 router.get('/', function(req, res, next){
+	console.log("in route")
 	Product.findAll({
 		include: [ {model: Review, include: [{all: true }]}, Category ]
 	})

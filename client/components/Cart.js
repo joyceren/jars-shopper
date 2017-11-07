@@ -20,7 +20,7 @@ class Cart extends React.Component {
       <div>
         <div className="cart-header">
           <h2>CART</h2>
-          <button>Checkout</button>
+          <Link to="/checkout"><button>Checkout</button></Link>
         </div>
         <div className="cart-items">
           { cart && cart.length ?
