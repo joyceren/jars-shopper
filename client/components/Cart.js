@@ -48,8 +48,8 @@ class Cart extends React.Component {
 
 function mapState(state) {
   return {
-    cart:state.cart,
-    userId:state.user.id
+    cart: state.cart,
+    userId: state.user.id
   }
 }
 
