@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
-  checkout,
   getFullName,
   getBillingAdd,
   getBillingCity,
@@ -14,9 +13,10 @@ import {
   getShippingZip,
   getCCNum,
   getExpMonth,
-  getExpYear
+  getExpYear,
+  onSubmissionThunk
 
- } from '../store'
+ } from '../store/checkout'
 
 const Checkout = (props) => {
 
@@ -41,7 +41,7 @@ const Checkout = (props) => {
       <div>
         <h1>Checkout</h1>
         <h4>Billing Information</h4>
-        <form onSubmit = {(evt) => handleSubmit(checkout, cart, evt)}>
+        <form onSubmit = {(evt) => handleSubmit(checkout, evt)}>
           <label> Name
             <input type='text' value={checkout.name} onChange= {handleFullName}/>
 
@@ -63,11 +63,9 @@ const Checkout = (props) => {
             <input type='text' value={checkout.billingZip} onChange= {handleBillingZip}/>
               </label>
 
-          </form>
 
         <h4>Shipping Information</h4>
 
-        <form>
           <label> Name
             <input type='text' value={checkout.fullName} onChange= {handleFullName}/>
             </label>
@@ -88,16 +86,13 @@ const Checkout = (props) => {
             <input type='text' value={checkout.shippingZip} onChange= {handleShippingZip}/>
               </label>
 
-          </form>
 
 
 
         <h4> Payment Information </h4>
-        <form>
           <label> Credit Card Number
             <input type='text' value={checkout.ccNum} onChange={handleCCNum}/>
             </label>
-            </form>
             <label> Expiration Month
             <select onChange= {handleExpMonth}>
             <option value ="">Month</option>
@@ -129,6 +124,7 @@ const Checkout = (props) => {
 
             </label>
 
+            </form>
 
 
           <div>
@@ -185,9 +181,9 @@ const mapDispatchToProps = function (dispatch, ownProps) {
       handleShippingZip: evt => {
           dispatch(getShippingZip(evt.target.value));
       },
-      handleSubmit: (customerInfo, productInfo, evt) => {
+      handleSubmit: (customerInfo, evt) => {
         evt.preventDefault();
-        dispatch(onSubmissionThunk(customerInfo, productInfo))
+        dispatch(onSubmissionThunk(customerInfo))
       }
   }
 }
