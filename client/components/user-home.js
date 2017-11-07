@@ -189,6 +189,9 @@ const mapDispatch = (dispatch, ownProps) => {
       axios.post('/api/products', newProduct)
       .then(res => res.data)
       .then(product => console.log(product))
+    },
+    updateProduct(productId, status){
+      axios.put('/api/product/'+productId, {status})
     }
   }
 }
