@@ -52,7 +52,11 @@ export class UserHome extends React.Component {
                               <h3>{product.title}</h3>
                             </Link>
                             <h4>${product.price}</h4>
-                            <form onSubmit = {evt => {this.props.updateProduct(product.id, evt.target.status.value)}}>
+                            <form onSubmit = {evt => {
+                              evt.preventDefault()
+                              this.props.updateProduct(product.id, evt.target.status.value)
+                              console.log("clicked")
+                            }}>
                                 <label>
                                   Inventory:
                                   <select name="status" defaultValue={product.quantity}>
@@ -190,8 +194,11 @@ const mapDispatch = (dispatch, ownProps) => {
       .then(res => res.data)
       .then(product => console.log(product))
     },
-    updateProduct(productId, status){
-      axios.put('/api/product/'+productId, {status})
+    updateProduct(productId, quantity){
+      console.log(status)
+      axios.put(`/api/products/${+productId}`, {quantity})
+      .then(res => res.data)
+      .then(product => console.log(product))
     }
   }
 }
