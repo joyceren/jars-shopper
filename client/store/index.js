@@ -12,6 +12,8 @@ import categoryProducts from './categoryProducts'
 import userOrders from './userOrders'
 import selectedOrder from './selectedOrder'
 import checkout from './checkout'
+import orders from './orders'
+import users from './allUsers'
 
 const reducer = combineReducers({
   user,
@@ -23,7 +25,9 @@ const reducer = combineReducers({
   categoryProducts,
   userOrders,
   selectedOrder,
-  checkout
+  checkout,
+  orders,
+  users,
 })
 
 const middleware = composeWithDevTools(applyMiddleware(
@@ -43,3 +47,5 @@ export * from './categoryProducts'
 export * from './userOrders'
 export * from './selectedOrder'
 export * from './checkout'
+export * from './orders'
+export * from './allUsers'

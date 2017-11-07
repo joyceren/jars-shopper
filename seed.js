@@ -2,10 +2,13 @@ const db = require('./server/db/index');
 const { Product, Order, User, Review, Category, ProductCategories, OrderProducts } = require('./server/db/models/index');
 
 
-const users = [{ email: 'thequeen@england.com', password: 'password', googleId: 'queeny', isAdmin: false },
-                { email: 'theking@england.com', password: '123', googleId: 'bigboss', isAdmin: false },
-              { email: 'jonsnow@thenorth.com', password: 'iknownothing', googleId: 'jonnysnow', isAdmin: false },
-            ];
+const users = [
+  { name: 'queeny', email: 'thequeen@england.com', password: 'password', googleId: 'queeny', isAdmin: true },
+  { name: 'bigboss', email: 'theking@england.com', password: '123', googleId: 'bigboss', isAdmin: false },
+  { name: 'jonnysnow', email: 'jonsnow@thenorth.com', password: 'iknownothing', googleId: 'jonnysnow', isAdmin: false },
+  { name: 'Joyce', email: 'joyce.y.ren@gmail.com', password: '123', googleId: 'bigboss', isAdmin: true },
+  { name: 'Zeke', email: 'zeke@zeke.zeke', password: '123', isAdmin: false },
+];
 
 const reviews = [
   { stars: 5, title: 'Best Ever', text: 'wooooooooooooooooooooooooooooooooooooooooo', userId: 1, productId: 1},
@@ -23,7 +26,10 @@ const products = [
   { id: 6, title: "Ord", description: "There's Ord, he's the biggest, not so brave of heart.", price: 0, quantity: 1, image: "http://imgs.tuts.dragoart.com/how-to-draw-ord-from-dragon-tales_1_000000002730_5.jpg"},
   { id: 7, title: "Zack and Weezy", description: "'Cuz you know two heads are better than one.'", price: 0, quantity: 2, image: "http://vignette1.wikia.nocookie.net/dragontalespedia/images/e/e0/Dragontales_zakwheezie.jpg/revision/latest?cb=20110312205711"},
   { id: 8, title: 'Dragon8', description: 'testing another empty image one', price: 20, quantity: 20 },
-  { id: 9, title: 'Drogon', description: 'Likes to be scratched behind his ears. Breathes fire on command. Eats sheep.', price: 1, quantity: 1, image: "https://i.pinimg.com/736x/59/97/39/599739e32e602c5fc0705beb0ffab582.jpg"}
+  { id: 9, title: 'Drogon', description: 'Likes to be scratched behind his ears. Breathes fire on command. Eats sheep.', price: 1, quantity: 1, image: "https://i.pinimg.com/736x/59/97/39/599739e32e602c5fc0705beb0ffab582.jpg"},
+  { id: 10, title: 'Godzilla', description: 'Lives in the ocean, collects shells.', price: 2500, quantity: 5, image: "https://vignette.wikia.nocookie.net/godzilla/images/9/96/PDVD_017.jpg/revision/latest/scale-to-width-down/250?cb=20111231041808"},
+  { id: 11, title: 'Eragon', description: 'A 16 year old wrote this book', price: 2, quantity: 1000, image: "http://3.bp.blogspot.com/_BpaEvM1RrUs/TP8FbyI8dmI/AAAAAAAAABM/SDgb1WQo_6M/s1600/Eragon+book+1.jpg" },
+  { id: 12, title: 'Mushu', description: 'The  guardian of lost souls! I am the powerful, the pleasurable, the indestructible Mushu!', price: 2500, quantity: 1, image: "http://orig15.deviantart.net/429a/f/2013/213/2/5/mushu_by_lionkingrulez-d6g7l0s.png" },
 ]
 
 const categories = [
@@ -43,6 +49,9 @@ const productCategories = [
   { productId: 7, categoryId: 3 },
   { productId: 7, categoryId: 4 },
   { productId: 9, categoryId: 2 },
+  { productId: 10, categoryId: 3 },
+  { productId: 11, categoryId: 1 },
+  { productId: 12, categoryId: 2 },
 ]
 
 const orders = [

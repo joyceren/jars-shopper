@@ -19,7 +19,6 @@ export function fetchUserOrders (userId) {
       return axios.get(`/api/orders/user/${userId}`)
         .then(res => res.data)
         .then(orders => {
-          console.log(orders)
           dispatch(getUserOrdersActionCreator(orders))
         })
   }
