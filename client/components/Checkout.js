@@ -7,8 +7,7 @@ const Checkout = (props) => {
 
   const { checkout } = props;
     const {
-      handleFirstName,
-      handleLastName,
+      handleFullName,
       handleShippingAddress,
       handleBillingAddress,
       handleShippingCity,
@@ -29,8 +28,8 @@ const Checkout = (props) => {
         <h4>Billing Information</h4>
         <form>
           <label> Name
-            <input type='text' value={checkout.firstName} onChange= {handleFirstName}/>
-            <input type='text' value={checkout.lastName} onChange= {handleLastName}/>
+            <input type='text' value={checkout.name} onChange= {handleFullName}/>
+    
             </label>
 
             <label> Address
@@ -55,8 +54,7 @@ const Checkout = (props) => {
 
         <form>
           <label> Name
-            <input type='text' value={checkout.firstName} onChange= {handleFirstName}/>
-            <input type='text' value={checkout.lastName} onChange= {handleLastName}/>
+            <input type='text' value={checkout.fullName} onChange= {handleFullName}/>
             </label>
 
             <label> Address
@@ -135,11 +133,8 @@ const mapStateToProps = function ({checkout}) {
 }
 const mapDispatchToProps = function (dispatch, ownProps) {
   return {
-      handleFirstName: evt => {
+      handleFullName: evt => {
           dispatch(getFirstName(evt.target.value));
-      },
-      handleLastName: evt => {
-          dispatch(getLastName(evt.target.value));
       },
       handleBillingAddress: evt => {
           dispatch(getBillingAdd(evt.target.value));
