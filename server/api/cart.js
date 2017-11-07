@@ -43,5 +43,16 @@ router.delete('/', (req, res, next) => {
   .catch(next)
 })
 
+router.delete('/:id', (req, res, next) => {
+  console.log(req.params.id)
+  Order.findById(req.session.cartId)
+  .then(order => {
+    order.removeProduct(req.params.id);
+    return order;
+  })
+  .then(order => res.json(order))
+  .catch(next)
+})
+
 module.exports = router;
 

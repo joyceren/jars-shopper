@@ -22,7 +22,6 @@ export function fetchCart() {
             const action = setCart(order);
             dispatch(action)
         })
-
   }
 }
 
@@ -35,5 +34,16 @@ export function addToCart(productId, currentPrice, quantity) {
         dispatch(action)
         // history.push('/cart')
       })
+  }
+}
+
+export function deleteFromCart(productId) {
+  return function thunk(dispatch) {
+    return axios.delete(`/api/cart/${productId}`)
+    .then(res => res.data)
+    .then(order => {
+      const action = setCart(order);
+      dispatch(action);
+    })
   }
 }

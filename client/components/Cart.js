@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {fetchCart} from '../store';
+import {fetchCart, deleteFromCart} from '../store';
 
 
 class Cart extends React.Component {
@@ -14,6 +14,8 @@ class Cart extends React.Component {
     if(this.props.userId!==nextProps.userId) this.props.loadCart()
   }
 
+
+
   render(){
     const cart = this.props.cart.products
     return (
@@ -25,15 +27,21 @@ class Cart extends React.Component {
         <div className="cart-items">
           { cart && cart.length ?
             cart.map(item => (
-              <Link to={`products/${item.id}`} key={item.id}>
+              <div key={item.id}>
+              <Link to={`products/${item.id}`} >
                 <div className="product-list-item single-cart-item">
                   <img src={item.image}/>
                   <h3>{item.title}</h3>
                   <p>${item.price}</p>
                   <h2>Qty: {item.order_products.quantity}</h2>
-                  <button>X</button>
+
                 </div>
               </Link>
+              <button onClick={() => {
+                console.log('IN CLICK HANDLER', item.id)
+                this.props.deleteFromCartHandler(item.id);
+              }} >X</button>
+              </div>
             ))
             :
             <div className="product-list-item single-cart-item">
@@ -57,6 +65,9 @@ function mapDispatch(dispatch) {
   return {
     loadCart() {
       dispatch(fetchCart())
+    },
+    deleteFromCartHandler(id) {
+      dispatch(deleteFromCart(id))
     }
   }
 }
