@@ -31,7 +31,7 @@ class SingleProduct extends React.Component {
               <form onSubmit={(evt) => {
                 evt.preventDefault();
                 this.props.addToCartHandler(product.id, product.price, evt.target.quantity.value);
-              }}>>
+              }}>
                 <select name="quantity">
                   {qtyArr.map((e, i) => (
                     <option key={i} value={i+1}>{i+1}</option>
