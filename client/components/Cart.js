@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {fetchCart} from '../store';
+import {fetchCart, deleteFromCart} from '../store';
 
 
 class Cart extends React.Component {
@@ -11,7 +11,8 @@ class Cart extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    if(this.props.userId!==nextProps.userId) this.props.loadCart()
+    this.props = nextProps;
+    if(this.props.cart.id!==nextProps.cart.id) this.props.loadCart()
   }
 
   render(){
@@ -25,15 +26,29 @@ class Cart extends React.Component {
         <div className="cart-items">
           { cart && cart.length ?
             cart.map(item => (
-              <Link to={`products/${item.id}`} key={item.id}>
-                <div className="product-list-item single-cart-item">
-                  <img src={item.image}/>
-                  <h3>{item.title}</h3>
+              <div key={item.id} className="product-list-item single-cart-item">
+
+                <div className="single-cart-item">
+                  <Link to={`products/${item.id}`} >
+                      <img src={item.image}/>
+                  </Link>
+
+                  <Link to={`products/${item.id}`} >
+                      <h3>{item.title}</h3>
+                  </Link>
+
                   <p>${item.price}</p>
+
                   <h2>Qty: {item.order_products.quantity}</h2>
-                  <button>X</button>
+
+                  <button onClick={() => {
+                    this.props.deleteFromCartHandler(item.id);
+                    this.forceUpdate()
+                  }} >X</button>
+
                 </div>
-              </Link>
+
+              </div>
             ))
             :
             <div className="product-list-item single-cart-item">
@@ -57,6 +72,9 @@ function mapDispatch(dispatch) {
   return {
     loadCart() {
       dispatch(fetchCart())
+    },
+    deleteFromCartHandler(id) {
+      dispatch(deleteFromCart(id))
     }
   }
 }

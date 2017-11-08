@@ -12,6 +12,7 @@ export {default as Home} from './Home'
 export {default as Category} from './Category'
 export {default as Cart} from './Cart'
 export {default as Order} from './Order'
-
 export {default as Checkout} from './Checkout'
 export {default as ReviewOrder} from './ReviewOrder'
+export {default as Review} from './Review'
+export {default as Footer} from './Footer'

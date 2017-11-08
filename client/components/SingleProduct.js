@@ -30,8 +30,8 @@ class SingleProduct extends React.Component {
             <div className="AddToCart">
               <form onSubmit={(evt) => {
                 evt.preventDefault();
-                this.props.addToCartHandler(product.id, product.price, evt.target.quantity.value);
-              }}>>
+                this.props.addToCartHandler(product.id, evt.target.quantity.value);
+              }}>
                 <select name="quantity">
                   {qtyArr.map((e, i) => (
                     <option key={i} value={i+1}>{i+1}</option>
@@ -47,6 +47,29 @@ class SingleProduct extends React.Component {
               <p>{product.description}</p>
               <h2>Reviews</h2>
               <div className='reviews-container'>
+
+              { this.props.isLoggedIn ?
+
+                <div>
+                  <form>
+                    <label>Stars:</label>
+                    <input type="radio" name="stars" value="0" />
+                    <input type="radio" name="stars" value="1" />
+                    <input type="radio" name="stars" value="2" />
+                    <input type="radio" name="stars" value="3" />
+                    <input type="radio" name="stars" value="4" />
+                    <input type="radio" name="stars" value="5" />
+                    <br></br>
+                    <input type="text" name="text" value="review"/>
+                    <input type="submit" />
+                  </form>
+                </div>
+                :
+                <div>
+                Log in to Leave a Review!
+                </div>
+
+              }
 
                 {
                   product.reviews && product.reviews.map(review => {
@@ -72,17 +95,16 @@ class SingleProduct extends React.Component {
 
 const mapStateToProps = function (state) {
   return {
-     product: state.product
+     product: state.product,
+     isLoggedIn: !!state.user.id,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getProduct(id) {
-      dispatch(fetchProduct(id))
-    },
-    addToCartHandler(productId, currentPrice, quantity) {
-      dispatch(addToCart(productId, currentPrice, quantity))
+    getProduct(id) {dispatch(fetchProduct(id))},
+    addToCartHandler(productId, quantity) {
+      dispatch(addToCart(productId, quantity))
     }
   }
 }

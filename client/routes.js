@@ -4,7 +4,7 @@ import {Router} from 'react-router'
 import {Route, Switch, withRouter} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import history from './history'
-import {Main, Home, Login, Signup, UserHome, AllProducts, SingleProduct, Cart, Category, Sidebar, Order, Checkout, ReviewOrder } from './components'
+import {Main, Home, Login, Signup, UserHome, AllProducts, SingleProduct, Cart, Category, Sidebar, Order, Checkout, NewProductForm, ReviewOrder } from './components'
 import {me, fetchProducts, fetchCategories} from './store'
 
 
@@ -37,6 +37,7 @@ class Routes extends Component {
             <Route path= "/review" component = {ReviewOrder} />
             <Route exact path="/" component = {Home} />
 
+
             {
               isLoggedIn &&
                 <Switch>
@@ -46,6 +47,7 @@ class Routes extends Component {
             }
             //{/* Displays our Login component as a fallback */}
             <Route exact path="/" component={Home} />
+
           </Switch>
         </Main>
       </Router>

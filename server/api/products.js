@@ -24,13 +24,17 @@ router.get('/:id', function(req, res, next){
 })
 
 router.post('/', (req, res, next) => {
+	console.log(req.body)
 	Product.create(req.body)
-		.then((product) => res.json(product))
+		.then((product) => {
+			console.log(product)
+			res.json(product)
+		})
 		.catch(next)
 })
 
 router.put('/:id', (req, res, next) => {
-	Product.findById(req.params.id)
+	Product.findById(+req.params.id)
 		.then((product) => product.update(req.body))
 		.then((product) => res.json(product))
 		.catch(next);

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import history from '../history'
 
 const SET_CART = 'GET_CART'
 
@@ -22,18 +23,28 @@ export function fetchCart() {
             const action = setCart(order);
             dispatch(action)
         })
-
   }
 }
 
-export function addToCart(productId, currentPrice, quantity) {
+export function addToCart(productId, quantity) {
   return function thunk(dispatch) {
-    return axios.put('/api/cart', {order: {}, productId, currentPrice, quantity})
+    return axios.put('/api/cart', {order: {}, productId, quantity})
       .then(res => res.data)
       .then(order => {
         const action = setCart(order);
         dispatch(action)
-        // history.push('/cart')
+        history.push('/cart')
       })
+  }
+}
+
+export function deleteFromCart(productId) {
+  return function thunk(dispatch) {
+    return axios.delete(`/api/cart/${productId}`)
+    .then(res => res.data)
+    .then(order => {
+      const action = setCart(order);
+      dispatch(action);
+    })
   }
 }
