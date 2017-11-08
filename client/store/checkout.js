@@ -126,12 +126,12 @@ export default function checkoutReducer(state=initialState, action) {
 
 }
 
-//be sure to add user info and order info as well
-export function onSubmissionThunk(customerInfo, productInfo) {
+export function onSubmissionThunk(customerInfo) {
   return function thunk(dispatch) {
-      return axios.put('/api/orders', { customerInfo,  productInfo})
+      return axios.put('/api/cart', { customerInfo })
           .then(res => res.data)
           .then(result => {
+            console.log('Result of submission thunk')
             console.log(result);
               dispatch(submit());
           })
