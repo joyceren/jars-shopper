@@ -10,7 +10,6 @@ class ReviewOrder extends Component {
     super(props);
     this.state = {
       cart: {},
-      checkout: {}
     };
 
 
@@ -51,6 +50,9 @@ class ReviewOrder extends Component {
         <h5>City: {checkout.billingCity} </h5>
         <h5>State: {checkout.billingState} </h5>
         <h5>Zip: {checkout.billingZip} </h5>
+        </div>
+
+        <div>
         </div>
 
 
