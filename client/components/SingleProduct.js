@@ -30,7 +30,7 @@ class SingleProduct extends React.Component {
             <div className="AddToCart">
               <form onSubmit={(evt) => {
                 evt.preventDefault();
-                this.props.addToCartHandler(product.id, product.price, evt.target.quantity.value);
+                this.props.addToCartHandler(product.id, evt.target.quantity.value);
               }}>
                 <select name="quantity">
                   {qtyArr.map((e, i) => (
@@ -102,11 +102,9 @@ const mapStateToProps = function (state) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getProduct(id) {
-      dispatch(fetchProduct(id))
-    },
-    addToCartHandler(productId, currentPrice, quantity) {
-      dispatch(addToCart(productId, currentPrice, quantity))
+    getProduct(id) {dispatch(fetchProduct(id))},
+    addToCartHandler(productId, quantity) {
+      dispatch(addToCart(productId, quantity))
     }
   }
 }

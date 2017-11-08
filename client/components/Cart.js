@@ -11,10 +11,9 @@ class Cart extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    if(this.props.userId!==nextProps.userId) this.props.loadCart()
+    this.props = nextProps;
+    if(this.props.cart.id!==nextProps.cart.id) this.props.loadCart()
   }
-
-
 
   render(){
     const cart = this.props.cart.products
@@ -27,18 +26,28 @@ class Cart extends React.Component {
         <div className="cart-items">
           { cart && cart.length ?
             cart.map(item => (
-              <div key={item.id}>
-              <Link to={`products/${item.id}`} >
-                <div className="product-list-item single-cart-item">
-                  <img src={item.image}/>
-                  <h3>{item.title}</h3>
+              <div key={item.id} className="product-list-item single-cart-item">
+
+                <div className="single-cart-item">
+                  <Link to={`products/${item.id}`} >
+                      <img src={item.image}/>
+                  </Link>
+
+                  <Link to={`products/${item.id}`} >
+                      <h3>{item.title}</h3>
+                  </Link>
+
                   <p>${item.price}</p>
+
                   <h2>Qty: {item.order_products.quantity}</h2>
+
+                  <button onClick={() => {
+                    this.props.deleteFromCartHandler(item.id);
+                    this.forceUpdate()
+                  }} >X</button>
+
                 </div>
-              </Link>
-              <button onClick={() => {
-                this.props.deleteFromCartHandler(item.id);
-              }} >X</button>
+
               </div>
             ))
             :

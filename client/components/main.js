@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import {logout} from '../store'
 import Navbar from './Navbar'
+import Footer from './Footer'
 
 /**
  * COMPONENT
@@ -21,6 +22,7 @@ const Main = (props) => {
       <div className="main-container">
         {children}
       </div>
+      <Footer />
     </div>
   )
 }

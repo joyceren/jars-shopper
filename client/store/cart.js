@@ -1,4 +1,5 @@
 import axios from 'axios';
+import history from '../history'
 
 const SET_CART = 'GET_CART'
 
@@ -25,14 +26,14 @@ export function fetchCart() {
   }
 }
 
-export function addToCart(productId, currentPrice, quantity) {
+export function addToCart(productId, quantity) {
   return function thunk(dispatch) {
-    return axios.put('/api/cart', {order: {}, productId, currentPrice, quantity})
+    return axios.put('/api/cart', {order: {}, productId, quantity})
       .then(res => res.data)
       .then(order => {
         const action = setCart(order);
         dispatch(action)
-        // history.push('/cart')
+        history.push('/cart')
       })
   }
 }

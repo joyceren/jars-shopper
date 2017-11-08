@@ -43,11 +43,11 @@ router.delete('/', (req, res, next) => {
   .catch(next)
 })
 
-router.delete('/:id', (req, res, next) => {
-  console.log(req.params.id)
+router.delete('/:productId', (req, res, next) => {
+  console.log(req.params.productId)
   Order.findById(req.session.cartId)
   .then(order => {
-    order.removeProduct(req.params.id);
+    order.removeProduct(req.params.productId);
     return order;
   })
   .then(order => res.json(order))
@@ -55,4 +55,3 @@ router.delete('/:id', (req, res, next) => {
 })
 
 module.exports = router;
-

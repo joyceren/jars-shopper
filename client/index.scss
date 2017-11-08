@@ -131,6 +131,7 @@ img {
 
 .single-cart-item {
   display:flex;
+  flex-direction: row;
   justify-content: space-between;
   width: inherit;
 }
@@ -171,4 +172,12 @@ img {
 
 .admin-panel {
   background-color: WhiteSmoke;
+}
+
+.footer {
+   position:fixed;
+   bottom:0;
+   width:100%;
+   height:60px;
+   background:lightgrey;
 }
