@@ -1,10 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link, withRouter} from 'react-router-dom';
-import { fetchProduct, addToCart } from '../store'
+import { fetchProduct, addToCart } from '../store';
 
 
-//change to class with componentDidMount and componentWillReceiveProps
 class SingleProduct extends React.Component {
 
   componentDidMount() {
@@ -12,9 +11,10 @@ class SingleProduct extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.props = nextProps;
+    if (this.props.match.params.id !== nextProps.match.params.id) {
+      nextProps.getProduct(Number(nextProps.match.params.id));
+    }
   }
-  // I'm not sure what this does?
 
   render () {
 
@@ -109,4 +109,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default(connect(mapStateToProps, mapDispatchToProps)(SingleProduct));
+export default (connect(mapStateToProps, mapDispatchToProps)(SingleProduct));

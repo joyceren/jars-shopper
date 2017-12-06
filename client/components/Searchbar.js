@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import AutoComplete from 'material-ui/AutoComplete';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import {fetchProducts, fetchProduct} from '../store';
 import SearchResults from './SearchResults';
-
 
 export class Searchbar extends Component {
 constructor(props) {
@@ -19,6 +19,13 @@ constructor(props) {
   this.clearQuery = this.clearQuery.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
 }
+
+componentWillReceiveProps(newProps) {
+  if (newProps !== this.props ) {
+    this.props = newProps;
+  }
+}
+
 
 handleInput(query) {
   this.setState({
@@ -40,13 +47,14 @@ clearQuery() {
 
 handleSubmit(event) {
   event.preventDefault();
-  let products = this.props.products;
 
+  let products = this.props.products;
   for (let i = 0; i < products.length; i++) {
     if (this.state.query === products[i].title) {
       this.context.router.history.push(`/products/${products[i].id}`);
     }
   }
+  this.clearQuery();
   }
 
 getProductNames(products) {
@@ -104,4 +112,4 @@ return {
 //   }
 // }
 
-export default connect(mapStateToProps, null)(Searchbar);
+export default withRouter(connect(mapStateToProps, null)(Searchbar));
