@@ -4,7 +4,6 @@ import AutoComplete from 'material-ui/AutoComplete';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import {fetchProducts, fetchProduct} from '../store';
-import SearchResults from './SearchResults';
 
 export class Searchbar extends Component {
 constructor(props) {
