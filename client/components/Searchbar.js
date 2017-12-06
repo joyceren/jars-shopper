@@ -85,10 +85,7 @@ render() {
           fullWidth={ true }
         />
       </form>
-
-      {/* <Category /> */}
       <br />
-      {/* <SearchResults filteredProducts={filteredProducts} /> */}
     </div>
   )
 }
