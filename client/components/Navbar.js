@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import {logout} from '../store';
+import Searchbar from './Searchbar';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 
 const Navbar = (props) => {
   const {handleClick, isLoggedIn} = props
@@ -25,19 +28,21 @@ const Navbar = (props) => {
             )}
         </div>
       </div>
+      <MuiThemeProvider>
+      <Searchbar />
+      </MuiThemeProvider>
 
-      <Link to="/"><h1>DRAGON ADOPTION AGENCY</h1></Link>
 
       <div className="navbar-right">
-
-        <div className="search-bar">
+      <Link to="/"><h1>DRAGON ADOPTION AGENCY</h1></Link>
+        {/* <div className="search-bar">
           <form>
             <input type="text" name="searchKey" />
             <input type="Submit" value="Search" onChange={(evt) => {
               evt.preventDefault();
             }}/>
           </form>
-        </div>
+        </div> */}
 
             {
               isLoggedIn
