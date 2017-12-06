@@ -5,7 +5,7 @@ import { fetchProduct, addToCart } from '../store'
 
 
 //change to class with componentDidMount and componentWillReceiveProps
-class SingleProduct extends React.Component {
+export class SingleProduct extends React.Component {
 
   componentDidMount() {
     this.props.getProduct(Number(this.props.match.params.id));
@@ -19,7 +19,6 @@ class SingleProduct extends React.Component {
   render () {
 
     const product = this.props.product;
-    console.log('Product Id', product.id)
     const qtyArr = new Array(10).fill(0)
 
     return(
